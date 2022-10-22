@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hi!");
+﻿Console.WriteLine("Hi!");
 while (true)
 {
     Console.WriteLine("What's your name?");
