@@ -74,7 +74,6 @@
                 var result = parsedN + parsedN * 2;
                 Console.WriteLine(result);
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered not an integer value. Can't convert it.");
@@ -119,7 +118,6 @@
                 short result1 = Convert.ToInt16(number1);
                 Console.WriteLine(result1.GetType());
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered not an integer value. Can't convert it.");
@@ -132,7 +130,6 @@
                 ulong result2 = Convert.ToUInt64(number2);
                 Console.WriteLine(result2.GetType());
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered not an integer value. Can't convert it.");
@@ -145,7 +142,6 @@
                 char result3 = Convert.ToChar(number3);
                 Console.WriteLine(result3.GetType());
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered wrong value. Can't convert it.");
@@ -158,7 +154,6 @@
                 double result4 = Convert.ToDouble(number4);
                 Console.WriteLine(result4.GetType());
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered wrong value. Can't convert it.");
@@ -188,7 +183,6 @@
                 Console.WriteLine(
                     (convertedNum % 2 == 0) ? "The entered number is even." : "The entered number is odd.");
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered wrong value. Can't convert it.");
@@ -217,7 +211,6 @@
                     Console.WriteLine("Not working");
                 }
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered wrong value. Can't convert it.");
@@ -272,7 +265,6 @@
                     }
                 }
             }
-
             catch (FormatException)
             {
                 Console.WriteLine("You've entered wrong value. Can't convert it.");
