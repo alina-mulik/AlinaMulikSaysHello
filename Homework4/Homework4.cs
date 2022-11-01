@@ -12,15 +12,15 @@ namespace AlinaMulikSaysHello
     {
         static void Main(string[] args)
         {
-            Task1();
-            Task2();
-            Task3();
-            Task4();
-            Task5();
-            Task6();
+            //Task1();
+            //Task2();
+            //Task3();
+            //Task4();
+            //Task5();
+            //Task6();
             Task7();
-            Task8();
-            Task9();
+            //Task8();
+            //Task9();
         }
 
         /* Task 1
@@ -113,10 +113,7 @@ namespace AlinaMulikSaysHello
                 if (item == "Hello")
                 {
                     Console.WriteLine("Labas!");
-                }
-                else
-                {
-                    Console.WriteLine(item);
+                    break;
                 }
             }
         }
@@ -130,7 +127,7 @@ namespace AlinaMulikSaysHello
         {
             Console.WriteLine("Task 6");
             int[] ints = new int[] { 10, 3, 5, 9, 8, 15, 45 };
-            var summ = ints.First() + ints.Last();
+            var summ = ints[0] + ints[ints.Length - 1];
             Console.WriteLine($"{ints.First()} + {ints.Last()} = {summ}");
         }
 
@@ -142,8 +139,27 @@ namespace AlinaMulikSaysHello
         {
             Console.WriteLine("Task 7");
             int[] ints = new int[] { 1, 0, 5, 9, 8, 99, 15, 7 };
-            var maxIndex = Array.IndexOf(ints, ints.Max());
-            var minIndex = Array.IndexOf(ints, ints.Min());
+            var numOfMax = 0;
+            var numOfMin = 0;
+
+            foreach (var item in ints)
+            {
+                foreach (var item2 in ints)
+                {
+                    if (item < item2)
+                    {
+                        numOfMin = item2;
+                    }
+
+                    else if (item > item2)
+                    {
+                        numOfMax = item2;
+                    }
+                }
+            }
+
+            var maxIndex = Array.IndexOf(ints, numOfMax);
+            var minIndex = Array.IndexOf(ints, numOfMin);
             var summ = maxIndex + minIndex;
             Console.WriteLine($"{maxIndex} + {minIndex} = {summ}");
         }
