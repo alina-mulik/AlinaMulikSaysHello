@@ -1,0 +1,54 @@
+﻿using People;
+
+namespace MainHospitalClass
+{
+    public class MainMethod
+    {
+        static void Main(string[] args)
+        {
+            // Add Patients with their diseases and meds prescribed
+            string jack = "Jack Jackson";
+            string july = "July Jackson";
+            string monica = "Monica Hudson";
+            string bob = "Bob Parkinson";
+            string kate = "Kate Parkinson";
+            string marcus = "Marcus Lourence";
+
+            // Add Doctor and do not assign _patients to them - using the first constructor
+            Doctor cox = new Doctor(id: 1, age: 54, name: "Perry Cox", gender: "male", specialty: "physician", yearsOfExperience: 20, hasPhd: true);
+            var coxPatients = new string[] { monica, july, marcus };
+            cox.AddPatientToDoctorProfile(coxPatients);
+
+            // Add Doctor and assign _patients to them - using the second constructor
+            var gregorysPatients = new string[] { jack, july, bob };
+            Doctor gregory = new Doctor(id: 2, age: 53, name: "Gregory House", gender: "male", specialty: "diagnostician", yearsOfExperience: 20, hasPhd: true, patients: gregorysPatients);
+
+            // Just an example of work of OutPutDoctorInfo function
+            cox.OutPutDoctorInfo();
+
+            // Create an instance of the Hospital class
+            var patients = new string[] { jack, bob, kate, marcus, july, monica };
+            var doctors = new Doctor[] { gregory, cox };
+            Hospital stPaulHospital = new Hospital(name: "St. Paul Hospital", patients: patients, doctors: doctors);
+
+            // Get St. Paul Hospital _budget after Patients Payments for visits
+            Console.WriteLine($"Hospital's Budget After Patients Payments For Visits: {stPaulHospital.GetBudgetAfterPatientsPaymentsForVisits(8)}");
+
+            // Get St. Paul Hospital _budget after Paying Salary To Doctors
+            Console.WriteLine($"Hospital's Budget After Paying Salary To Doctors: {stPaulHospital.GetBudgetAfterPayingSalaryToDoctors()}");
+
+
+            // Doctor heals patient's disease
+            cox.CurePatientDisease(july, "Stomach Ache");
+
+            // Get St. Paul Hospital General Info
+            stPaulHospital.OutputHospitalInfo();
+
+            // Output St. Paul Hospital all _doctors names
+            stPaulHospital.OutPutAllDoctorsNames();
+
+            // Output St. Paul Hospital all _patients' names
+            stPaulHospital.OutPutAllPatientNames();
+        }
+    }
+}

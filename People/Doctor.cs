@@ -1,68 +1,83 @@
 ﻿namespace People
 {
-    public class Doctor: Person
+    public class Doctor
     {
-        private const int perPatientBonus = 100;
-        private const int qualifiedDoctorPayment = 15000;
-        private const int underQualifiedDoctorPayment = 1000;
-        private string specialty;
-        private int yearsOfExperience;
-        private bool hasPHD;
-        private int salary;
-        private List<Patient> patientsList;
+        private const int PerPatientBonus = 100;
+        private const int QualifiedDoctorPayment = 15000;
+        private const int UnderQualifiedDoctorPayment = 1000;
+        private string _name;
+        private int _age;
+        private int _id;
+        private string _gender;
+        private string _specialty;
+        private int _yearsOfExperience;
+        private bool _hasPhd;
+        private int _salary;
+        private string[] _patientsArray;
 
-        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPHD)
+        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd)
         {
-            Name = name;
-            Gender = gender.ToLower();
-            Age = age;
-            Id = id;
-            this.specialty = specialty.ToLower();
-            this.yearsOfExperience = yearsOfExperience;
-            this.hasPHD = hasPHD;
-            this.patientsList = new List<Patient>();
+            this._name = name;
+            this._gender = gender.ToLower();
+            this._age = age;
+            this._id = id;
+            this._specialty = specialty.ToLower();
+            this._yearsOfExperience = yearsOfExperience;
+            this._hasPhd = hasPhd;
+        }
+
+        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, string[] patients)
+        {
+            this._name = name;
+            this._gender = gender.ToLower();
+            this._age = age;
+            this._id = id;
+            this._specialty = specialty.ToLower();
+            this._yearsOfExperience = yearsOfExperience;
+            this._hasPhd = hasPhd;
+            this._patientsArray = patients;
         }
 
         public int GetSalary()
         {
-            if (hasPHD && yearsOfExperience > 5 || specialty == "surgeon" || specialty == "dentist")
+            if (_hasPhd && _yearsOfExperience > 5 || _specialty == "surgeon" || _specialty == "dentist")
             {
-                salary = qualifiedDoctorPayment + (patientsList.Count * perPatientBonus);
+                _salary = QualifiedDoctorPayment + (_patientsArray.Length * PerPatientBonus);
             }
             else
             {
-                salary = underQualifiedDoctorPayment * yearsOfExperience + (patientsList.Count * perPatientBonus);
+                _salary = UnderQualifiedDoctorPayment * _yearsOfExperience + (_patientsArray.Length * PerPatientBonus);
             }
 
-            return salary;
+            return _salary;
         }
 
         public void OutPutDoctorInfo()
         {
-            var namesOfPatients = new List<string>();
-            foreach (var patient in patientsList)
-            {
-                namesOfPatients.Add(patient.GetName());
-            }
+            Console.WriteLine("------------------");
             Console.WriteLine("Doctor's Information:");
-            Console.WriteLine($"{Id}, {Name}, {Age} years old, Salary: {this.GetSalary()}, {Gender}, Has PHD: {hasPHD}, \nYears Of Experience: {yearsOfExperience}, Specialization: {specialty}");
-            Console.WriteLine($"List of Patients: {String.Join(',', namesOfPatients)}");
+            Console.WriteLine($"{_id}, {_name}, {_age} years old, Salary: {GetSalary()}, {_gender}, Has PHD: {_hasPhd}, \nYears Of Experience: {_yearsOfExperience}, Specialization: {_specialty}");
+            Console.WriteLine($"List of Patients: {String.Join(',', _patientsArray)}");
+            Console.WriteLine("------------------");
         }
 
+        public string GetDoctorName() { return _name; }
 
-        public List<Patient> GetListOfPatients() { return patientsList; }
+        public string[] GetListOfPatients() { return _patientsArray; }
 
-        public void AddPatientToDoctorProfile(Patient patient)
+        public void AddPatientToDoctorProfile(string[] patients)
         {
-            patientsList.Add(patient);
+            _patientsArray = patients;
         }
 
-        public void HealPatientDisease(Patient patient, string disease)
+        public void CurePatientDisease(string patient, string disease)
         {
-            if (this.patientsList.Contains(patient))
-            {
-                patient.RemoveDiseaseFromTheListOfDiseases(disease);
-            }
+            Console.WriteLine("--------At the Doctor's Office----------");
+            Console.WriteLine($"{patient} came to the doctor's {this._name} office.");
+            Console.WriteLine($"Doctor noticed patient's disease! It's {disease}!");
+            Console.WriteLine($"Doctor is giving a cure to the {patient}!");
+            Console.WriteLine($"Now the {patient} is healthy and can go home.");
+            Console.WriteLine("------------------");
         }
     }
 }
