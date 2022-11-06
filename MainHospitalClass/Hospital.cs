@@ -12,10 +12,10 @@ namespace MainHospitalClass
 
         public Hospital(string name, string[] patients, Doctor[] doctors, int budget = 1000000)
         {
-            this._name = name;
-            this._patients = patients;
-            this._doctors = doctors;
-            this._budget = budget;
+            _name = name;
+            _patients = patients;
+            _doctors = doctors;
+            _budget = budget;
         }
 
         public void OutPutAllPatientNames()

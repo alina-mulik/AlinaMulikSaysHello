@@ -16,15 +16,16 @@ namespace MainHospitalClass
 
             // Add Doctor and do not assign _patients to them - using the first constructor
             Doctor cox = new Doctor(id: 1, age: 54, name: "Perry Cox", gender: "male", specialty: "physician", yearsOfExperience: 20, hasPhd: true);
-            var coxPatients = new string[] { monica, july, marcus };
-            cox.AddPatientToDoctorProfile(coxPatients);
+            var coxPatients = new string[] { monica, july };
+            cox.AddPatientsToDoctorProfile(coxPatients);
+            cox.OutPutDoctorInfo();
+            cox.AddPatientToDoctorProfile(marcus);
+            cox.OutPutDoctorPatients();
 
             // Add Doctor and assign _patients to them - using the second constructor
             var gregorysPatients = new string[] { jack, july, bob };
             Doctor gregory = new Doctor(id: 2, age: 53, name: "Gregory House", gender: "male", specialty: "diagnostician", yearsOfExperience: 20, hasPhd: true, patients: gregorysPatients);
-
-            // Just an example of work of OutPutDoctorInfo function
-            cox.OutPutDoctorInfo();
+            gregory.OutPutDoctorInfo();
 
             // Create an instance of the Hospital class
             var patients = new string[] { jack, bob, kate, marcus, july, monica };
@@ -40,6 +41,8 @@ namespace MainHospitalClass
 
             // Doctor heals patient's disease
             cox.CurePatientDisease(july, "Stomach Ache");
+            cox.DeletePatientFromDoctorProfile(july);
+            cox.OutPutDoctorPatients();
 
             // Get St. Paul Hospital General Info
             stPaulHospital.OutputHospitalInfo();

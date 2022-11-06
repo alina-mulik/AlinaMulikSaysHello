@@ -1,4 +1,6 @@
-﻿namespace People
+﻿using System;
+
+namespace People
 {
     public class Doctor
     {
@@ -17,25 +19,25 @@
 
         public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd)
         {
-            this._name = name;
-            this._gender = gender.ToLower();
-            this._age = age;
-            this._id = id;
-            this._specialty = specialty.ToLower();
-            this._yearsOfExperience = yearsOfExperience;
-            this._hasPhd = hasPhd;
+            _name = name;
+            _gender = gender.ToLower();
+            _age = age;
+            _id = id;
+            _specialty = specialty.ToLower();
+            _yearsOfExperience = yearsOfExperience;
+            _hasPhd = hasPhd;
         }
 
         public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, string[] patients)
         {
-            this._name = name;
-            this._gender = gender.ToLower();
-            this._age = age;
-            this._id = id;
-            this._specialty = specialty.ToLower();
-            this._yearsOfExperience = yearsOfExperience;
-            this._hasPhd = hasPhd;
-            this._patientsArray = patients;
+            _name = name;
+            _gender = gender.ToLower();
+            _age = age;
+            _id = id;
+            _specialty = specialty.ToLower();
+            _yearsOfExperience = yearsOfExperience;
+            _hasPhd = hasPhd;
+            _patientsArray = patients;
         }
 
         public int GetSalary()
@@ -54,10 +56,15 @@
 
         public void OutPutDoctorInfo()
         {
-            Console.WriteLine("------------------");
             Console.WriteLine("Doctor's Information:");
             Console.WriteLine($"{_id}, {_name}, {_age} years old, Salary: {GetSalary()}, {_gender}, Has PHD: {_hasPhd}, \nYears Of Experience: {_yearsOfExperience}, Specialization: {_specialty}");
             Console.WriteLine($"List of Patients: {String.Join(',', _patientsArray)}");
+            Console.WriteLine("------------------");
+        }
+
+        public void OutPutDoctorPatients()
+        {
+            Console.WriteLine($"List of Patients of Dr.{_name}: {String.Join(',', _patientsArray)}");
             Console.WriteLine("------------------");
         }
 
@@ -65,9 +72,27 @@
 
         public string[] GetListOfPatients() { return _patientsArray; }
 
-        public void AddPatientToDoctorProfile(string[] patients)
+        public void AddPatientsToDoctorProfile(string[] patients)
         {
             _patientsArray = patients;
+        }
+
+        public void AddPatientToDoctorProfile(string patient)
+        {
+            var arrayLength = _patientsArray.Length + 1;
+            Array.Resize( ref _patientsArray, arrayLength);
+            _patientsArray.SetValue(patient, _patientsArray.Length - 1);
+            Console.WriteLine($"Patient {patient} has been added to Dr.{GetDoctorName()} Patients.");
+        }
+
+        public void DeletePatientFromDoctorProfile(string patient)
+        {
+            for (int a = Array.IndexOf(_patientsArray, patient); a < _patientsArray.Length - 1; a++)
+            {
+                _patientsArray[a] = _patientsArray[a + 1];
+            }
+            Array.Resize(ref _patientsArray, _patientsArray.Length - 1);
+            Console.WriteLine($"Patient {patient} has been removed from Dr.{GetDoctorName()} Patients.");
         }
 
         public void CurePatientDisease(string patient, string disease)
