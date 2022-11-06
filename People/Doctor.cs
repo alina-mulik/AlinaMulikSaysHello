@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace People
+﻿namespace People
 {
     public class Doctor
     {
@@ -28,15 +26,8 @@ namespace People
             _hasPhd = hasPhd;
         }
 
-        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, string[] patients)
+        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, string[] patients) : this( name, gender, age, id, specialty, yearsOfExperience, hasPhd)
         {
-            _name = name;
-            _gender = gender.ToLower();
-            _age = age;
-            _id = id;
-            _specialty = specialty.ToLower();
-            _yearsOfExperience = yearsOfExperience;
-            _hasPhd = hasPhd;
             _patientsArray = patients;
         }
 
@@ -74,7 +65,26 @@ namespace People
 
         public void AddPatientsToDoctorProfile(string[] patients)
         {
-            _patientsArray = patients;
+            if (_patientsArray != null)
+            {
+                foreach (string patient in patients)
+                {
+                    if (_patientsArray.Contains(patient))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        var arrayLength = _patientsArray.Length + 1;
+                        Array.Resize(ref _patientsArray, arrayLength);
+                        _patientsArray.SetValue(patient, _patientsArray.Length - 1);
+                    }
+                }
+            }
+            else
+            {
+                _patientsArray = patients;
+            }
         }
 
         public void AddPatientToDoctorProfile(string patient)

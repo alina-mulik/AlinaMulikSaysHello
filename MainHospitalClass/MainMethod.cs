@@ -13,6 +13,8 @@ namespace MainHospitalClass
             string bob = "Bob Parkinson";
             string kate = "Kate Parkinson";
             string marcus = "Marcus Lourence";
+            string laura = "Laura Robertson";
+            string john = "John Brown";
 
             // Add Doctor and do not assign _patients to them - using the first constructor
             Doctor cox = new Doctor(id: 1, age: 54, name: "Perry Cox", gender: "male", specialty: "physician", yearsOfExperience: 20, hasPhd: true);
@@ -25,6 +27,10 @@ namespace MainHospitalClass
             // Add Doctor and assign _patients to them - using the second constructor
             var gregorysPatients = new string[] { jack, july, bob };
             Doctor gregory = new Doctor(id: 2, age: 53, name: "Gregory House", gender: "male", specialty: "diagnostician", yearsOfExperience: 20, hasPhd: true, patients: gregorysPatients);
+
+            // Add 2 more patients to Gregory House
+            var morePatientsForGregory = new string[] { laura, john };
+            gregory.AddPatientsToDoctorProfile(morePatientsForGregory);
             gregory.OutPutDoctorInfo();
 
             // Create an instance of the Hospital class
