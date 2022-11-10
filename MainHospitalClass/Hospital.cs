@@ -2,15 +2,15 @@
 
 namespace MainHospitalClass
 {
-    public class Hospital
+    public class Hospital : Institution
     {
         private const int PerVisitPayment = 500;
         private string _name;
-        private string[] _patients;
+        private Patient[] _patients;
         private Doctor[] _doctors;
         private int _budget;
 
-        public Hospital(string name, string[] patients, Doctor[] doctors, int budget = 1000000)
+        public Hospital(string name, Patient[] patients, Doctor[] doctors, int budget) : base(name, budget)
         {
             _name = name;
             _patients = patients;
@@ -21,7 +21,7 @@ namespace MainHospitalClass
         public void OutPutAllPatientNames()
         {
             Console.WriteLine("List of Patients:");
-            Console.WriteLine(String.Join(',', _patients));
+            Console.WriteLine(String.Join(',', Person.GetArrayOfNames(_patients)));
             Console.WriteLine("------------------");
         }
 
@@ -30,24 +30,18 @@ namespace MainHospitalClass
             Console.WriteLine("List of Doctors:");
             foreach (var doctor in _doctors)
             {
-                Console.Write($"{doctor.GetDoctorName()},");
+                Console.Write($"{doctor.GetName()},");
             }
             Console.WriteLine("\n------------------");
         }
 
-        public int GetBudgetAfterPayingSalaryToDoctors()
+        public override int GetBudget()
         {
             foreach (var doctor in _doctors)
             {
                 _budget -= doctor.GetSalary();
             }
-
-            return _budget;
-        }
-
-        public int GetBudgetAfterPatientsPaymentsForVisits(int totalNumberOfVisits)
-        {
-            _budget += totalNumberOfVisits * PerVisitPayment;
+            _budget += _patients.Length * PerVisitPayment;
 
             return _budget;
         }

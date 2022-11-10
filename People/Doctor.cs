@@ -1,32 +1,24 @@
 ﻿namespace People
 {
-    public class Doctor
+    public class Doctor : Person
     {
         private const int PerPatientBonus = 100;
         private const int QualifiedDoctorPayment = 15000;
         private const int UnderQualifiedDoctorPayment = 1000;
-        private string _name;
-        private int _age;
-        private int _id;
-        private string _gender;
         private string _specialty;
         private int _yearsOfExperience;
         private bool _hasPhd;
         private int _salary;
-        private string[] _patientsArray;
+        private Patient[] _patientsArray;
 
-        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd)
+        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd) : base(name, age, id, gender)
         {
-            _name = name;
-            _gender = gender.ToLower();
-            _age = age;
-            _id = id;
             _specialty = specialty.ToLower();
             _yearsOfExperience = yearsOfExperience;
             _hasPhd = hasPhd;
         }
 
-        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, string[] patients) : this( name, gender, age, id, specialty, yearsOfExperience, hasPhd)
+        public Doctor(string name, string gender, int age, int id, string specialty, int yearsOfExperience, bool hasPhd, Patient[] patients) : this( name, gender, age, id, specialty, yearsOfExperience, hasPhd)
         {
             _patientsArray = patients;
         }
@@ -48,26 +40,27 @@
         public void OutPutDoctorInfo()
         {
             Console.WriteLine("Doctor's Information:");
-            Console.WriteLine($"{_id}, {_name}, {_age} years old, Salary: {GetSalary()}, {_gender}, Has PHD: {_hasPhd}, \nYears Of Experience: {_yearsOfExperience}, Specialization: {_specialty}");
-            Console.WriteLine($"List of Patients: {String.Join(',', _patientsArray)}");
+            Console.WriteLine($"{Id}, {Name}, {Age} years old, Gender: {Gender}, Salary: {GetSalary()}, Has PHD: {_hasPhd}, \nYears Of Experience: {_yearsOfExperience}, Specialization: {_specialty}");
+            Console.WriteLine($"List of Patients: {String.Join(',', GetArrayOfNames(_patientsArray))}");
             Console.WriteLine("------------------");
         }
 
         public void OutPutDoctorPatients()
         {
-            Console.WriteLine($"List of Patients of Dr.{_name}: {String.Join(',', _patientsArray)}");
+            Console.WriteLine($"List of Patients of Dr.{Name}: {String.Join(',', GetArrayOfNames(_patientsArray))}");
             Console.WriteLine("------------------");
         }
 
-        public string GetDoctorName() { return _name; }
+        public new string GetName()
+        {
+            return "Dr. " + Name;
+        }
 
-        public string[] GetListOfPatients() { return _patientsArray; }
-
-        public void AddPatientsToDoctorProfile(string[] patients)
+        public void AddPatientsToDoctorProfile(Patient[] patients)
         {
             if (_patientsArray != null)
             {
-                foreach (string patient in patients)
+                foreach (Person patient in patients)
                 {
                     if (_patientsArray.Contains(patient))
                     {
@@ -87,31 +80,33 @@
             }
         }
 
-        public void AddPatientToDoctorProfile(string patient)
+        public void AddPatientToDoctorProfile(Patient patient)
         {
             var arrayLength = _patientsArray.Length + 1;
-            Array.Resize( ref _patientsArray, arrayLength);
+            Array.Resize(ref _patientsArray, arrayLength);
             _patientsArray.SetValue(patient, _patientsArray.Length - 1);
-            Console.WriteLine($"Patient {patient} has been added to Dr.{GetDoctorName()} Patients.");
+            Console.WriteLine($"Patient {patient.GetName()} has been added to {GetName()} Patients.");
         }
 
-        public void DeletePatientFromDoctorProfile(string patient)
+        public void DeletePatientFromDoctorProfile(Patient patient)
         {
             for (int a = Array.IndexOf(_patientsArray, patient); a < _patientsArray.Length - 1; a++)
             {
                 _patientsArray[a] = _patientsArray[a + 1];
             }
             Array.Resize(ref _patientsArray, _patientsArray.Length - 1);
-            Console.WriteLine($"Patient {patient} has been removed from Dr.{GetDoctorName()} Patients.");
+            Console.WriteLine($"Patient {patient.GetName()} has been removed from {GetName()} Patients.");
         }
 
-        public void CurePatientDisease(string patient, string disease)
+        public void CurePatientDiseases(Patient patient)
         {
+            var patientName = patient.GetName();
             Console.WriteLine("--------At the Doctor's Office----------");
-            Console.WriteLine($"{patient} came to the doctor's {this._name} office.");
-            Console.WriteLine($"Doctor noticed patient's disease! It's {disease}!");
-            Console.WriteLine($"Doctor is giving a cure to the {patient}!");
-            Console.WriteLine($"Now the {patient} is healthy and can go home.");
+            Console.WriteLine($"{patientName} came to the {GetName()} office.");
+            Console.WriteLine($"Doctor noticed patient's diseases! It's {patient.GetListOfDiseases()}!");
+            Console.WriteLine($"Doctor is giving a {patient.GetListOfMeds()} to the {patientName}!");
+            patient.RemoveFromThePatientArray(patient.DiseasesArray, "disease");
+            Console.WriteLine($"Now the {patientName} is healthy and can go home.");
             Console.WriteLine("------------------");
         }
     }
