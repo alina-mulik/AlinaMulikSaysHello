@@ -2,14 +2,14 @@
 {
     public class Person
     {
-        private string name;
-        private int age;
-        private int id;
-        private string gender;
-        protected string Name { get { return name; } set { name = value; } }
-        protected string Gender { get { return gender; } set { gender = value; } }
-        protected int Age { get { return age; } set { age = value; } }
-        protected int Id { get { return id; } set { id = value; } }
+        private string _name;
+        private int _age;
+        private int _id;
+        private string _gender;
+        protected string Name { get { return _name; } set { _name = value; } }
+        protected string Gender { get { return _gender; } set { _gender = value; } }
+        protected int Age { get { return _age; } set { _age = value; } }
+        protected int Id { get { return _id; } set { _id = value; } }
 
         public Person(string name, int age, int id, string gender)
         {
@@ -21,18 +21,16 @@
 
         public string GetName()
         {
-            if (gender.ToLower() == "female")
+            if (_gender.ToLower() == "female")
             {
-                return "Mrs. " + name;
+                return "Mrs. " + _name;
             }
-            else if (gender.ToLower() == "male")
+            if (_gender.ToLower() == "male")
             {
-                return "Mr. " + name;
+                return "Mr. " + _name;
             }
-            else
-            {
-                return name;
-            }
+
+            return _name;
         }
 
         public static string[] GetArrayOfNames(Person[] array)

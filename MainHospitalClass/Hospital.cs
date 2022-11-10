@@ -5,17 +5,13 @@ namespace MainHospitalClass
     public class Hospital : Institution
     {
         private const int PerVisitPayment = 500;
-        private string _name;
         private Patient[] _patients;
         private Doctor[] _doctors;
-        private int _budget;
 
         public Hospital(string name, Patient[] patients, Doctor[] doctors, int budget) : base(name, budget)
         {
-            _name = name;
             _patients = patients;
             _doctors = doctors;
-            _budget = budget;
         }
 
         public void OutPutAllPatientNames()

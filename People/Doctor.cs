@@ -62,11 +62,7 @@
             {
                 foreach (Person patient in patients)
                 {
-                    if (_patientsArray.Contains(patient))
-                    {
-                        continue;
-                    }
-                    else
+                    if (!_patientsArray.Contains(patient))
                     {
                         var arrayLength = _patientsArray.Length + 1;
                         Array.Resize(ref _patientsArray, arrayLength);

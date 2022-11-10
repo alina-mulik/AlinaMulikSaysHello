@@ -2,8 +2,8 @@
 {
     public class Institution
     {
-        private string _name;
-        private int _budget;
+        protected string _name;
+        protected int _budget;
 
         public Institution(string name, int budget)
         {
