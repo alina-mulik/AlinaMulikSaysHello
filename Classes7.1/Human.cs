@@ -57,8 +57,8 @@ namespace Classes7._1
                 isHappy = false;
                 return isHappy;
             }
-
             isHappy = true;
+
             return isHappy;
         }
     }

@@ -50,8 +50,8 @@
                 isHappy = false;
                 return isHappy;
             }
-
             isHappy = true;
+
             return isHappy;
         }
     }
