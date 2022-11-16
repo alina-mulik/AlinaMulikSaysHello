@@ -4,7 +4,7 @@
     {
         private int _numberOfLives;
         public int NumberOfLives { get => _numberOfLives; set => _numberOfLives = value; }
-        public bool isGood { get => true; }
+        public bool IsGood { get => true; }
 
         public SuperHero(int numberOfLives)
         {

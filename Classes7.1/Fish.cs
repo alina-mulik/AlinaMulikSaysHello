@@ -4,8 +4,8 @@
     {
         private string _colour;
 
-        public override string Name { get => name; set => name = "Fish " + value; }
-        public override int Age { get => age; set => age = value; }
+        public override string LivingBeingName { get => Name; set => Name = "Fish " + value; }
+        public override int LivingBeingAge { get => Age; set => Age = value; }
         public string Colour { get => _colour; set => _colour = value; }
 
         public Fish(string colour, string name, int age) : base(name, age)
@@ -15,44 +15,44 @@
 
         public override void Eat()
         {
-            Console.WriteLine($"The {Name} is eating worms: *om-nom-nom-nom*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The {LivingBeingName} is eating worms: *om-nom-nom-nom*");
+            PointsOfHappiness++;
         }
 
         public override void Move()
         {
-            Console.WriteLine($"The {Name} is moving in the water silently.");
-            pointsOfHappiness++;
+            Console.WriteLine($"The {LivingBeingName} is moving in the water silently.");
+            PointsOfHappiness++;
         }
 
         public void Play()
         {
-            Console.WriteLine($"The {Name} is playing with other fishes.");
-            pointsOfHappiness++;
+            Console.WriteLine($"The {LivingBeingName} is playing with other fishes.");
+            PointsOfHappiness++;
         }
 
         public void Hide()
         {
-            Console.WriteLine($"The {Name} is hiding from predator.");
-            pointsOfHappiness++;
+            Console.WriteLine($"The {LivingBeingName} is hiding from predator.");
+            PointsOfHappiness++;
         }
 
         public void MakeBubbles()
         {
-            Console.WriteLine($"The {Name} is making bubbles: *bul-bulk-bul*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The {LivingBeingName} is making bubbles: *bul-bulk-bul*");
+            PointsOfHappiness++;
         }
 
-        public override bool IsHappy()
+        public override bool IsLivingBeingHappy()
         {
-            if (pointsOfHappiness < 2)
+            if (PointsOfHappiness < 2)
             {
-                isHappy = false;
-                return isHappy;
+                IsHappy = false;
+                return IsHappy;
             }
-            isHappy = true;
+            IsHappy = true;
 
-            return isHappy;
+            return IsHappy;
         }
     }
 }

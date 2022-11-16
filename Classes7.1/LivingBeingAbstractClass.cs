@@ -2,26 +2,35 @@
 {
     public abstract class LivingBeingAbstractClass
     {
-        public bool isHappy;
-        public int pointsOfHappiness;
-        public static int counterOfLivingBeings;
-        public string? name;
-        public int age;
-        public abstract string Name { get ; set; }
-        public abstract int Age { get; set; }
+        protected bool IsHappy;
+        protected int PointsOfHappiness;
+        protected static int CounterOfLivingBeings;
+        protected string? Name;
+        protected int Age;
+        public abstract string LivingBeingName { get ; set; }
+        public abstract int LivingBeingAge { get; set; }
 
         public LivingBeingAbstractClass(string? name, int age)
         {
             Name = name;
             Age = age;
-            counterOfLivingBeings++;
+            CounterOfLivingBeings++;
         }
 
         public abstract void Move();
 
         public abstract void Eat();
 
-        public abstract bool IsHappy();
+        public abstract bool IsLivingBeingHappy();
 
+        public static int OutputCounterOfLivingBeings()
+        {
+            return CounterOfLivingBeings;
+        }
+
+        public int OutputPointsOfHappiness()
+        {
+            return PointsOfHappiness;
+        }
     }
 }

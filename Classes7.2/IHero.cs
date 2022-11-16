@@ -4,7 +4,7 @@
     {
         public const string HeroMotto = "I have no fear!";
         public int NumberOfLives { get; set; }
-        public bool isGood { get; }
+        public bool IsGood { get; }
 
         public void BeHero();
 

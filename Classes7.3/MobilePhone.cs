@@ -2,8 +2,19 @@
 {
     public class MobilePhone : DeviceAbstractClass, ITakePhoto
     {
-        public MobilePhone(string? modelName, decimal price, double numberOfPixelsInCamera) : base(modelName, price, numberOfPixelsInCamera)
+        private double _numberOfPixelsInCamera;
+        public override string Description
         {
+            get
+            {
+                return $"Price: {Price}, model:{ModelName}, number of pixels in camera: {NumberOfPixelsInCamera}";
+            }
+        }
+        public double NumberOfPixelsInCamera { get => _numberOfPixelsInCamera; set => _numberOfPixelsInCamera = value; }
+
+        public MobilePhone(string? modelName, decimal price, double numberOfPixelsInCamera) : base(modelName, price)
+        {
+            NumberOfPixelsInCamera = numberOfPixelsInCamera;
         }
 
         public void TakePhoto()

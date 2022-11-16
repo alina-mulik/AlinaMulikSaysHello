@@ -11,8 +11,8 @@ namespace Main7._1
             jack.Drink();
             jack.Eat();
             jack.Rest();
-            var isHumanJackHappy = jack.IsHappy();
-            Console.WriteLine($"Human {jack.Name} is happy? {isHumanJackHappy}, points of happiness: {jack.pointsOfHappiness}");
+            var isHumanJackHappy = jack.IsLivingBeingHappy();
+            Console.WriteLine($"Human {jack.LivingBeingName} is happy? {isHumanJackHappy}, points of happiness: {jack.OutputPointsOfHappiness()}");
 
             // Create a fish, call  some methods from abstract base class and Fish's unique methods
             Fish nemo = new Fish(colour: "Orange", name: "Nemo", age: 2);
@@ -20,9 +20,9 @@ namespace Main7._1
             nemo.Move();
             nemo.MakeBubbles();
             nemo.Play();
-            var isFishNemoHappy = nemo.IsHappy();
-            Console.WriteLine($"Fish {nemo.Name} is happy? {isFishNemoHappy}, points of happiness: {nemo.pointsOfHappiness}");
-            Console.WriteLine($"Living beings in total: {LivingBeingAbstractClass.counterOfLivingBeings}");
+            var isFishNemoHappy = nemo.IsLivingBeingHappy();
+            Console.WriteLine($"Fish {nemo.LivingBeingName} is happy? {isFishNemoHappy}, points of happiness: {nemo.OutputPointsOfHappiness()}");
+            Console.WriteLine($"Living beings in total: {LivingBeingAbstractClass.OutputCounterOfLivingBeings()}");
         }
     }
 }

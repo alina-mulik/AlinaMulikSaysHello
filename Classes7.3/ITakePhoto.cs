@@ -2,6 +2,8 @@
 {
     interface ITakePhoto
     {
+        public double NumberOfPixelsInCamera { get; set; }
+
         public void TakePhoto();
     }
 }

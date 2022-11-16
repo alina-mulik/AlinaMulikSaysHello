@@ -8,7 +8,8 @@ namespace Classes7._3
 {
     public interface IPrint
     {
-        public string Description { get;}
+        public int PaperHeight { get; set; }
+        public int PaperWidth { get; set; }
 
         public void Print();
     }

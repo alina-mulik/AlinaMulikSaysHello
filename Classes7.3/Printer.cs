@@ -2,17 +2,24 @@
 {
     public class Printer : DeviceAbstractClass, IPrint
     {
-        public Printer(string? modelName, decimal price, int paperWidth, int paperHeight) : base(modelName, price, paperWidth, paperHeight)
+        private int _paperWidth;
+        private int _paperHeight;
+        public Printer(string? modelName, decimal price, int paperWidth, int paperHeight) : base(modelName, price)
         {
+            _paperWidth = paperWidth;
+            _paperHeight = paperHeight;
         }
 
-        public new string Description
+        public override string Description
         {
             get
             {
-                return $"Price: {price}, model:{modelName}";
+                return $"Price: {Price}, model:{ModelName}";
             }
         }
+
+        public int PaperHeight { get => _paperHeight; set => _paperHeight = value; }
+        public int PaperWidth { get => _paperWidth; set => _paperWidth = value; }
 
         public void Print()
         {

@@ -5,8 +5,8 @@ namespace Classes7._1
     public class Human : LivingBeingAbstractClass
     {
         private string _gender;
-        public override string Name { get => name; set => name = value; }
-        public override int Age { get => age; set => age = value; }
+        public override string LivingBeingName { get => Name; set => Name = value; }
+        public override int LivingBeingAge { get => Age; set => Age = value; }
         public string? Gender { get => _gender; set => _gender = value; }
 
         public Human(string name, int age, string? gender) : base(name, age)
@@ -16,50 +16,50 @@ namespace Classes7._1
 
         public override void Move()
         {
-            Console.WriteLine($"The human {Name} is going: *sounds of footsteps*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is going: *sounds of footsteps*");
+            PointsOfHappiness++;
         }
 
         public override void Eat()
         {
-            Console.WriteLine($"The human {Name} is eating burger: *om-nom-nom-nom*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is eating burger: *om-nom-nom-nom*");
+            PointsOfHappiness++;
         }
 
         public void Drink()
         {
-            Console.WriteLine($"The human {Name} is drinking water: *sounds of gulping*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is drinking water: *sounds of gulping*");
+            PointsOfHappiness++;
         }
 
         public void Travel()
         {
-            Console.WriteLine($"The human {Name} is traveling on a car: *sounds of car engine*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is traveling on a car: *sounds of car engine*");
+            PointsOfHappiness++;
         }
 
         public void Work()
         {
-            Console.WriteLine($"The human {Name} is working: *sounds of keyboard typing*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is working: *sounds of keyboard typing*");
+            PointsOfHappiness++;
         }
 
         public void Rest()
         {
-            Console.WriteLine($"The human {Name} is resting: *sounds of deep breething*");
-            pointsOfHappiness++;
+            Console.WriteLine($"The human {LivingBeingName} is resting: *sounds of deep breething*");
+            PointsOfHappiness++;
         }
 
-        public override bool IsHappy()
+        public override bool IsLivingBeingHappy()
         {
-            if (pointsOfHappiness < 3)
+            if (PointsOfHappiness < 3)
             {
-                isHappy = false;
-                return isHappy;
+                IsHappy = false;
+                return IsHappy;
             }
-            isHappy = true;
+            IsHappy = true;
 
-            return isHappy;
+            return IsHappy;
         }
     }
 }
