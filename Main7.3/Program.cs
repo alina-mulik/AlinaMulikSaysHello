@@ -12,29 +12,30 @@ namespace Main7._3
             MobilePhone iphone = new MobilePhone("13 Pro", 9000, 25.00);
 
             // Test some functions of these technical devices
+            Console.WriteLine($"Printer description:{lg.Description}");
+            Console.WriteLine($"Paper width: {lg.PaperWidth}");
+            Console.WriteLine($"Paper height: {lg.PaperHeight}");
             Console.WriteLine("Testing Printer functions:");
             lg.TurnOn();
             lg.Print();
-            lg.TunrnOff();
-            Console.WriteLine($"Paper width: {lg.PaperWidth}");
-            Console.WriteLine($"Paper height: {lg.PaperHeight}");
+            lg.TurnOff();
             Console.WriteLine("---------------------");
 
+            Console.WriteLine($"Polaroid description:{panasonic.Description}");
+            Console.WriteLine($"Paper width: {panasonic.PaperWidth}");
+            Console.WriteLine($"Paper height: {panasonic.PaperHeight}");
             Console.WriteLine("Testing Polaroid functions:");
             panasonic.TurnOn();
             panasonic.TakePhoto();
             panasonic.Print();
-            panasonic.TunrnOff();
-            Console.WriteLine($"Number of pixels: {panasonic.NumberOfPixelsInCamera}");
-            Console.WriteLine($"Paper width: {panasonic.PaperWidth}");
-            Console.WriteLine($"Paper height: {panasonic.PaperHeight}");
+            panasonic.TurnOff();
             Console.WriteLine("---------------------");
 
+            Console.WriteLine($"IPhone description:{iphone.Description}");
             Console.WriteLine("Testing IPhone functions:");
             iphone.TurnOn();
             iphone.TakePhoto();
-            Console.WriteLine($"Number of pixels: {iphone.NumberOfPixelsInCamera}");
-            iphone.TunrnOff();
+            iphone.TurnOff();
         }
     }
 }

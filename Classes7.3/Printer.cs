@@ -10,14 +10,6 @@
             _paperHeight = paperHeight;
         }
 
-        public override string Description
-        {
-            get
-            {
-                return $"Price: {Price}, model:{ModelName}";
-            }
-        }
-
         public int PaperHeight { get => _paperHeight; set => _paperHeight = value; }
         public int PaperWidth { get => _paperWidth; set => _paperWidth = value; }
 

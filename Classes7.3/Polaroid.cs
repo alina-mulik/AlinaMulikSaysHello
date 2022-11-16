@@ -7,13 +7,7 @@ namespace Classes7._3
         private double _numberOfPixelsInCamera;
         private int _paperWidth;
         private int _paperHeight;
-        public override string Description
-        {
-            get
-            {
-                return $"Price: {Price}, model:{ModelName}, number of pixels in camera: {NumberOfPixelsInCamera}";
-            }
-        }
+        public override string Description => $"Price: {Price}, model:{ModelName}, number of pixels in camera: {NumberOfPixelsInCamera}";
         public double NumberOfPixelsInCamera { get => _numberOfPixelsInCamera; set => _numberOfPixelsInCamera = value; }
         public int PaperHeight { get => _paperHeight; set => _paperWidth = value; }
         public int PaperWidth { get => _paperWidth; set => _paperWidth = value; }

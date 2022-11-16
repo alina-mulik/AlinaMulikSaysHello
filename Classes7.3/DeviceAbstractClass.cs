@@ -4,7 +4,7 @@
     {
         protected string? ModelName;
         protected decimal Price;
-        public virtual string Description { get; }
+        public virtual string Description  => $"Price: {Price}, model:{ModelName}";
 
         public DeviceAbstractClass(string? modelName, decimal price)
         {
@@ -14,7 +14,7 @@
 
         public abstract void TurnOn();
 
-        public void TunrnOff()
+        public void TurnOff()
         {
             Console.WriteLine("Press Turn Off button");
         }
