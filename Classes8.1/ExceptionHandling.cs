@@ -44,20 +44,16 @@ namespace Classes8._1
             var data = e.Message + e.StackTrace;
             if (!File.Exists(path))
             {
-                using (var txtFile = File.AppendText(path))
-                {
-                    txtFile.WriteLine(data);
-                    Console.WriteLine("An Exception details has been written to a LogFile!");
-
-                    return true;
-                }
+                File.WriteAllText(path, data);
+                Console.WriteLine("An Exception details have been written to a new LogFile!");
+                return true;
             }
             else if (File.Exists(path))
             {
                 using (var txtFile = File.AppendText(path))
                 {
                     txtFile.WriteLine(data);
-                    Console.WriteLine("An Exception details has been written to a LogFile!");
+                    Console.WriteLine("An Exception details have been appended to an existing LogFile!");
 
                     return true;
                 }
