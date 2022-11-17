@@ -7,6 +7,8 @@ namespace Classes8._2
         private int _timeOfParticlesCollisionMin;
         private int _numberOfParticlesForCollision;
         private int _temperatureOfCollider;
+        private bool falseSwitcher;
+
         public int TimeOfParticlesCollisionMin { get { return _timeOfParticlesCollisionMin; } set { _timeOfParticlesCollisionMin = value; } }
         public int NumberOfParticlesForCollision
         {
@@ -24,11 +26,16 @@ namespace Classes8._2
                         throw new InvalidQuantityOfParticlesException();
                     }
                 }
-                catch (InvalidQuantityOfParticlesException)
+                catch (InvalidQuantityOfParticlesException e) when (LogException(e))
                 {
-                    EmergencyTurnOffColider();
                 }
             }
+        }
+
+        private bool LogException(Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
         }
 
         public HadronColliderClass(int numberOfParticlesForCollision, int timeOfParticlesCollision)
