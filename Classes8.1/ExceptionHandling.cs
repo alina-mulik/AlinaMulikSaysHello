@@ -46,6 +46,7 @@ namespace Classes8._1
             {
                 File.WriteAllText(path, data);
                 Console.WriteLine("An Exception details have been written to a new LogFile!");
+
                 return true;
             }
             else if (File.Exists(path))
