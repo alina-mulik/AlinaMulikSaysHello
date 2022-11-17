@@ -1,0 +1,6 @@
+Index was outside the bounds of the array.   at Classes8._1.ExceptionHandling.ShowMassiveElement() in C:\Users\Alina Mulik\source\repos\AlinaMulikSaysHello\Classes8.1\ExceptionHandling.cs:line 17
+Index was outside the bounds of the array.   at Classes8._1.ExceptionHandling.ShowMassiveElement() in C:\Users\Alina Mulik\source\repos\AlinaMulikSaysHello\Classes8.1\ExceptionHandling.cs:line 17
+Input string was not in a correct format.   at System.Number.ThrowOverflowOrFormatException(ParsingStatus status, TypeCode type)
+   at System.Int32.Parse(String s)
+   at Classes8._1.ExceptionHandling.ShowMassiveElement() in C:\Users\Alina Mulik\source\repos\AlinaMulikSaysHello\Classes8.1\ExceptionHandling.cs:line 16
+Index was outside the bounds of the array.   at Classes8._1.ExceptionHandling.ShowMassiveElement() in C:\Users\Alina Mulik\source\repos\AlinaMulikSaysHello\Classes8.1\ExceptionHandling.cs:line 17

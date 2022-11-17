@@ -1,4 +1,6 @@
-﻿namespace Classes8._1
+﻿using System.IO;
+
+namespace Classes8._1
 {
     public class ExceptionHandling
     {
@@ -17,17 +19,18 @@
             }
             catch (FormatException e) when (LogException(e))
             {
-                Console.WriteLine("An exception has been logged.");
             }
             catch (IndexOutOfRangeException e) when (LogException(e))
             {
-                Console.WriteLine("An exception has been logged.");
             }
             catch (ArgumentNullException e) when (LogException(e))
             {
-                Console.WriteLine("An exception has been logged.");
             }
+
+            Console.WriteLine("Program continues...");
         }
+
+        public static string RootDir() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
 
         private static bool LogException(Exception e)
         {
@@ -37,9 +40,30 @@
             Console.WriteLine($"\tSource: {e.Source}");
             Console.WriteLine($"Call stack:{e.StackTrace}");
             Console.WriteLine("-----------");
-            return true;
+            var path = RootDir()  + "LogFile.txt";
+            var data = e.Message + e.StackTrace;
+            if (!File.Exists(path))
+            {
+                using (var txtFile = File.AppendText(path))
+                {
+                    txtFile.WriteLine(data);
+                    Console.WriteLine("An Exception details has been written to a LogFile!");
+
+                    return true;
+                }
+            }
+            else if (File.Exists(path))
+            {
+                using (var txtFile = File.AppendText(path))
+                {
+                    txtFile.WriteLine(data);
+                    Console.WriteLine("An Exception details has been written to a LogFile!");
+
+                    return true;
+                }
+            }
+
+            return false;
         }
-
-
     }
 }

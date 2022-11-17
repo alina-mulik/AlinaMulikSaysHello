@@ -32,12 +32,6 @@ namespace Classes8._2
             }
         }
 
-        private bool LogException(Exception e)
-        {
-            Console.WriteLine(e.Message);
-            return false;
-        }
-
         public HadronColliderClass(int numberOfParticlesForCollision, int timeOfParticlesCollision)
         {
             Console.WriteLine("All systems of the Hadron Collider are turned on!");
@@ -94,6 +88,12 @@ namespace Classes8._2
             Console.WriteLine("Turning Off all the systems of the Colider!");
             Console.WriteLine($"The temperature of the Colider is {_temperatureOfCollider} now!");
             Console.WriteLine("-------------------");
+        }
+
+        private bool LogException(Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
         }
     }
 }
