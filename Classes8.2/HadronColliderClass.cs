@@ -7,7 +7,6 @@ namespace Classes8._2
         private int _timeOfParticlesCollisionMin;
         private int _numberOfParticlesForCollision;
         private int _temperatureOfCollider;
-        private bool falseSwitcher;
 
         public int TimeOfParticlesCollisionMin { get { return _timeOfParticlesCollisionMin; } set { _timeOfParticlesCollisionMin = value; } }
         public int NumberOfParticlesForCollision
