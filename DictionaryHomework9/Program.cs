@@ -7,15 +7,18 @@ namespace DictionaryHomework9
         static void Main(string[] args)
         {
             // Task 1
+            Console.WriteLine("Task 1");
             AddValuesToDictAndOutputThem();
 
             // Task 2
+            Console.WriteLine("Task 2");
             List<string> listOfString = new List<string> { "Bear", "Wolf", "Rabbit", "Elephant", "Snake", "Frog", "Dog", "Cat", "Bat", "Lemur"};
             List<int> listOfInts = new List<int> { 3, 7, 1, 9, 99, 51, 2, 90, 67, 77 };
             var newDict = SortAndUnionGivenListsToDict(listOfString, listOfInts);
             OutputDictionaryKeysValuesTask2(newDict);
 
             // Task 3
+            Console.WriteLine("Task 3");
             City newYork = new City(8468000, 302.6);
             City oslo = new City(634293, 175.3);
             City copenhagen = new City(602481, 69.42);
@@ -50,11 +53,8 @@ namespace DictionaryHomework9
             dictionary["Kate"] = 29;
             try
             {
-                var search = dictionary.Where(p => p.Key.Contains("Alina"));
-                foreach (var result in search)
-                {
-                    Console.WriteLine("Product Name: {0}, Age: {1}", result.Key, result.Value);
-                }
+                var searchedElement = dictionary.First();
+                Console.WriteLine("Key of the first element in the Dict: {0}; Value is: {1}", searchedElement.Key, searchedElement.Value);
             }
             catch (KeyNotFoundException)
             {

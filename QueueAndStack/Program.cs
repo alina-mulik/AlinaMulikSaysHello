@@ -5,12 +5,15 @@
         static void Main(string[] args)
         {
             // Task 1:
+            Console.WriteLine("Task 1");
             var newQueue = AddValuesOfTheQueue();
-            Console.WriteLine($"The queue with the deleted element {DeleteValueInTheQueue(newQueue)}");
+            var changedQueue = DeleteValueInTheQueue(newQueue);
+            Console.WriteLine($"The queue with the deleted element {String.Join(",", changedQueue)}");
 
             // Task 2:
+            Console.WriteLine("Task 2");
             var newStack = AddValuesOfTheStack();
-            SortStackDesc(newStack);
+            RevereseOutputOfStack(newStack);
         }
 
         /* Task 1. Создайте Queue. Добавьте занчения в очередь с при помощи ввода с консоли.
@@ -88,14 +91,10 @@
             }
         }
 
-        public static void SortStackDesc(Stack<char> stack)
+        public static void RevereseOutputOfStack(Stack<char> stack)
         {
-            var orderedList = stack.OrderByDescending(x => x).ToList();
-            Console.WriteLine("Stack sorted by desc:");
-            foreach (var item in orderedList)
-            {
-                Console.WriteLine(item);
-            }
+            var reorderedList = stack.ToList();
+            Console.WriteLine($"Reversed output of the entered Stack:{String.Join(",", reorderedList)}");
         }
     }
 }
