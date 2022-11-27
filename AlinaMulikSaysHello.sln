@@ -65,9 +65,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DictionaryHomework9", "Dict
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LinkedList", "LinkedList", "{4F2FEC25-3480-4BE3-8418-3DC69FA560FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListHomework9", "LinkedListHomework9\LinkedListHomework9.csproj", "{148BECF6-782B-4406-94CC-10C8608ED5EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListHomework9", "LinkedListHomework9\LinkedListHomework9.csproj", "{148BECF6-782B-4406-94CC-10C8608ED5EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListClass", "LinkedListClass\LinkedListClass.csproj", "{0CA6ABF6-9813-4FAE-A29E-C069A601517F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedListClass", "LinkedListClass\LinkedListClass.csproj", "{0CA6ABF6-9813-4FAE-A29E-C069A601517F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CityClass", "CityClass\CityClass.csproj", "{F6642BEB-A832-488E-8C02-317B7FAD8C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +157,10 @@ Global
 		{0CA6ABF6-9813-4FAE-A29E-C069A601517F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA6ABF6-9813-4FAE-A29E-C069A601517F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA6ABF6-9813-4FAE-A29E-C069A601517F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6642BEB-A832-488E-8C02-317B7FAD8C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6642BEB-A832-488E-8C02-317B7FAD8C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6642BEB-A832-488E-8C02-317B7FAD8C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6642BEB-A832-488E-8C02-317B7FAD8C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +192,7 @@ Global
 		{4F2FEC25-3480-4BE3-8418-3DC69FA560FE} = {4D6BA544-7369-4FAB-838A-A9AEC9C8F23A}
 		{148BECF6-782B-4406-94CC-10C8608ED5EC} = {4F2FEC25-3480-4BE3-8418-3DC69FA560FE}
 		{0CA6ABF6-9813-4FAE-A29E-C069A601517F} = {4F2FEC25-3480-4BE3-8418-3DC69FA560FE}
+		{F6642BEB-A832-488E-8C02-317B7FAD8C23} = {6A881A9D-8BFA-44A6-A7E9-E0827055C85D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0B6FCDC-759D-4F0B-8375-40AAE812E73F}

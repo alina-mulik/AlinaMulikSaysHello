@@ -7,6 +7,14 @@ namespace LinkedListHomework9
     {
         static void Main(string[] args)
         {
+            /* Task 1. Создайте LinkedList и два элемента, вставьте второй элемент
+             * после каждого вхождения первого элемента в списке. https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=net-6.0
+             * Итак, если список равен [2,4,3,2,8,2,5,1,2], а элементы равны 2 и 10,
+             * результатом будет [2,10,4,3,2,10,8,2,10,5,1,2,10] */
+
+            /* Task 2. Объединить два связанных списка чисел, включив в окончательный список только те числа,
+             * которые встречаются в обоих спискаx.
+             * Итак, если списки [1,3,4,7,12] и [1,5,7,9], результат будет [1,7].*/
             // Task 1
             Console.WriteLine("Task 1.");
             LinkedList linked = new LinkedList();
@@ -41,13 +49,5 @@ namespace LinkedListHomework9
             var commonList = linkedList1.CompareTwoListsAndReturnCommonValuesList(linkedList2);
             commonList.PrintLinkedList();
         }
-        /* Task 1. Создайте LinkedList и два элемента, вставьте второй элемент
-         * после каждого вхождения первого элемента в списке. https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.linkedlist-1?view=net-6.0
-         * Итак, если список равен [2,4,3,2,8,2,5,1,2], а элементы равны 2 и 10,
-         * результатом будет [2,10,4,3,2,10,8,2,10,5,1,2,10] */
-
-        /* Task 2. Объединить два связанных списка чисел, включив в окончательный список только те числа,
-         * которые встречаются в обоих спискаx.
-         * Итак, если списки [1,3,4,7,12] и [1,5,7,9], результат будет [1,7].*/
     }
 }
