@@ -50,18 +50,18 @@ namespace GenericsMain
             arrayToAddAt.OutputFirstNamesOfItemsInArray();
         }
 
-        /*В обобщённом классе создайте метод ToString(), который будет в зависимости
+        /* Task 3. В обобщённом классе создайте метод ToString(), который будет в зависимости
          * от типа обобщения выводить имена всех людей, а также сообщение “There’re only women”
          * или “There’re only men”*/
         public static void ToString<T>(GenericArrayClass<T> arrayOfGenericItems) where T : Human, new()
         {
             if (arrayOfGenericItems.GetType() == typeof(Woman))
             {
-                Console.WriteLine($"There are only woman");
+                Console.WriteLine($"There are only women.");
             }
             else
             {
-                Console.WriteLine($"There are only man");
+                Console.WriteLine($"There are only man.");
             }
         }
     }
