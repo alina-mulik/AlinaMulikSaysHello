@@ -29,20 +29,34 @@ namespace Homework11
         }
 
         [Test]
-        public void DeleteTheRow()
+        public void DeleteTheFirstRowTest()
         {
-            var firstNameFirstRow = _driver.FindElement(By.XPath("//*[@role='gridcell'][contains(text(),'Cierra')]"));
-            var lastColumnFirstRow = _driver.FindElement(By.XPath("(//*[@role='row']/div[@class='rt-td'][last()])[1]"));
-            ScrollToElement(lastColumnFirstRow);
-            var deleteIcon = _driver.FindElement(By.XPath("//*[@id='delete-record-1']"));
-            deleteIcon.Click();
-            Assert.IsFalse(firstNameFirstRow.Displayed);
+            var deletedEntryFirstName = _driver.FindElement(By.XPath("(//*[@role=\"columnheader\"]/following::div" +
+                "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1])[1]")).Text;
+            DeleteRow(1);
+            var firstNameColumnValues = _driver.FindElements(By.XPath("//*[@role=\"columnheader\"]/following::div" +
+                "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1]"));
+            var listOfFirstNames = new List<string>();
+            foreach (var firstNameColumnValue in firstNameColumnValues)
+            {
+                listOfFirstNames.Add(firstNameColumnValue.Text);
+            }
+            Assert.IsFalse(listOfFirstNames.Contains(deletedEntryFirstName));
+            Assert.AreEqual(2, listOfFirstNames.Count);
         }
 
         [Test]
-        public void SearchForTheRecordThroughSearchBar()
+        public void SearchForTheRecordThroughSearchBarTest()
         {
-
+            var searchBar = _driver.FindElement(By.XPath("//*[@id='searchBox']"));
+            var lensIconButton = _driver.FindElement(By.XPath("//*[@id='basic-addon2']"));
+            var firstNameValueForSearch = "Alden";
+            searchBar.SendKeys(firstNameValueForSearch);
+            lensIconButton.Click();
+            var searchResult = _driver.FindElements(By.XPath("//*[@role=\"columnheader\"]/following::div" +
+                "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1]"));
+            Assert.AreEqual(1, searchResult.Count());
+            Assert.AreEqual(firstNameValueForSearch, searchResult[0].Text);
         }
 
         [OneTimeTearDown]
@@ -55,6 +69,13 @@ namespace Homework11
         {
             _javascriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
             element.Click();
+        }
+
+        private void DeleteRow(int rowIndex)
+        {
+            var deleteButton = _driver.FindElement(By.XPath($"((//*[@role='columnheader']" +
+                $"/following::div[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][last()])//span[@title='Delete'])[{rowIndex}]"));
+            deleteButton.Click();
         }
     }
 }

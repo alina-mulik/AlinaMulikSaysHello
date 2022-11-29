@@ -27,7 +27,7 @@ namespace Homework11
         }
 
         [Test]
-        public void CheckYesRadioButton()
+        public void CheckYesRadioButtonTest()
         {
             var yesRadioButtonCheckbox = _driver.FindElement(By.XPath("//input[@id='yesRadio']"));
             var yesRadioButton = _driver.FindElement(By.XPath("//label[@for='yesRadio']"));
@@ -38,9 +38,12 @@ namespace Homework11
         }
 
         [Test]
-        public void CheckNoRadioButtonIsDisabledAndNothingAppearsAfterClick()
+        public void CheckNoRadioButtonIsDisabledAndNothingAppearsAfterClickTest()
         {
             var noRadioButtonCheckbox = _driver.FindElement(By.XPath("//*[@id='noRadio']"));
+            var noRadioButtonLabel = _driver.FindElement(By.XPath("//label[@for='noRadio']"));
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            noRadioButtonLabel.Click();
             var disabledAttribute = noRadioButtonCheckbox.GetAttribute("disabled");
             Assert.AreEqual("true", disabledAttribute);
             Assert.IsFalse(noRadioButtonCheckbox.Enabled);

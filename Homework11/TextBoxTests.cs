@@ -26,7 +26,7 @@ namespace Homework11
         }
 
         [Test]
-        public void TextBoxWithValidValuesFullFlow()
+        public void TextBoxWithValidValuesFullFlowTest()
         {
             var textTextValue = HelperClass.RandomString(8);
             var validemail = $"{HelperClass.RandomString(8)}@gmail.com";
@@ -59,7 +59,7 @@ namespace Homework11
         }
 
         [Test]
-        public void TextBoxWithInvalidEmailFullFlow()
+        public void TextBoxWithInvalidEmailFullFlowTest()
         {
             var textTextValue = HelperClass.RandomString(8);
             var allFormInputs = _driver.FindElements(By.XPath("//*[contains(@class, 'form-control')]"));
@@ -69,7 +69,7 @@ namespace Homework11
             }
             var submitButton = _driver.FindElement(By.Id("submit"));
             ScrollToElementAndClick(submitButton);
-            var resultBox =  _driver.FindElement(By.XPath("//*[@id=\"output\"]/div"));
+            var resultBox =  _driver.FindElement(By.XPath("//*[@id='output']/div"));
             Assert.IsFalse(resultBox.Displayed);
         }
 
