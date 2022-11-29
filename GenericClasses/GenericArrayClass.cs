@@ -44,7 +44,7 @@
             return _objectsArray.Length;
         }
 
-        public void ToString()
+        public new void ToString()
         {
             if (_objectsArray.GetType() == typeof(Woman))
             {
