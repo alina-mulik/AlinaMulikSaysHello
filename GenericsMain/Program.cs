@@ -26,20 +26,21 @@ namespace GenericsMain
             array.OutputFirstNamesOfItemsInArray();
 
 
-            // Task 2
+            /* Task 2. В классе с методом Main напишите обобщённый метод, который который будет
+             * генерировать заданное количество элементов, элементы могут быть только типа
+             * Man и Woman и должны создаваться через вызов конструктора их класса new()*/
             Console.WriteLine("----------");
             Console.WriteLine("Task 2:");
             CreateDefaultObjects(5, array);
 
-            // Task 3
+            /* Task 3. В обобщённом классе создайте метод ToString(), который будет в зависимости
+             * от типа обобщения выводить имена всех людей, а также сообщение “There’re only women”
+             * или “There’re only men”*/
             Console.WriteLine("----------");
             Console.WriteLine("Task 3:");
-            ToString(array);
+            array.ToString();
         }
 
-        /* Task 2. В классе с методом Main напишите обобщённый метод, который который будет
-         * генерировать заданное количество элементов, элементы могут быть только типа
-         * Man и Woman и должны создаваться через вызов конструктора их класса new()*/
         public static void CreateDefaultObjects<T>(int numberOfObjects, GenericArrayClass<T> arrayToAddAt) where T : Human, new()
         {
             for (int i = 0; i < numberOfObjects; i++)
@@ -48,21 +49,6 @@ namespace GenericsMain
                 arrayToAddAt.AddObjectToArray(human);
             }
             arrayToAddAt.OutputFirstNamesOfItemsInArray();
-        }
-
-        /* Task 3. В обобщённом классе создайте метод ToString(), который будет в зависимости
-         * от типа обобщения выводить имена всех людей, а также сообщение “There’re only women”
-         * или “There’re only men”*/
-        public static void ToString<T>(GenericArrayClass<T> arrayOfGenericItems) where T : Human, new()
-        {
-            if (arrayOfGenericItems.GetType() == typeof(Woman))
-            {
-                Console.WriteLine($"There are only women.");
-            }
-            else
-            {
-                Console.WriteLine($"There are only man.");
-            }
         }
     }
 }

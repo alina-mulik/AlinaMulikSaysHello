@@ -43,5 +43,17 @@
         {
             return _objectsArray.Length;
         }
+
+        public void ToString()
+        {
+            if (_objectsArray.GetType() == typeof(Woman))
+            {
+                Console.WriteLine($"There are only women.");
+            }
+            else
+            {
+                Console.WriteLine($"There are only men.");
+            }
+        }
     }
 }
