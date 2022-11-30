@@ -21,13 +21,14 @@ namespace Homework11
         public void SetUp()
         {
             _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var textBoxButton = _driver.FindElement(By.Id("item-0"));
-            textBoxButton.Click();
+            var navigationButton = _driver.FindElement(By.Id("item-0"));
+            navigationButton.Click();
         }
 
         [Test]
         public void TextBoxWithValidValuesFullFlowTest()
         {
+            // Fill in all the input fields
             var textTextValue = HelperClass.RandomString(8);
             var validemail = $"{HelperClass.RandomString(8)}@gmail.com";
             var fullNameInput = _driver.FindElement(By.XPath("//*[@id='userName']"));
@@ -44,6 +45,8 @@ namespace Homework11
             permanentAddress.SendKeys(textTextValue);
             var submitButton = _driver.FindElement(By.Id("submit"));
             ScrollToElementAndClick(submitButton);
+
+            // Check Output
             var outputNameValueInBox = _driver.FindElement(By.CssSelector(".mb-1#name"));
             var valueInNameFromBox = outputNameValueInBox.Text;
             Assert.AreEqual($"Name:{textTextValue}", valueInNameFromBox, $"Actual {valueInNameFromBox} and expected Name:{textTextValue} values are not the same!");
@@ -61,6 +64,7 @@ namespace Homework11
         [Test]
         public void TextBoxWithInvalidEmailFullFlowTest()
         {
+            // Fill in input fields
             var textTextValue = HelperClass.RandomString(8);
             var allFormInputs = _driver.FindElements(By.XPath("//*[contains(@class, 'form-control')]"));
             foreach (var input in allFormInputs)
@@ -69,6 +73,8 @@ namespace Homework11
             }
             var submitButton = _driver.FindElement(By.Id("submit"));
             ScrollToElementAndClick(submitButton);
+
+            // Assert that Output is not displayed
             var resultBox =  _driver.FindElement(By.XPath("//*[@id='output']/div"));
             Assert.IsFalse(resultBox.Displayed);
         }

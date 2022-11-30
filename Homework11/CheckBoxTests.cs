@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Linq;
 
 namespace Homework11
 {
@@ -21,16 +22,23 @@ namespace Homework11
         public void SetUp()
         {
             _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var textBoxButton = _driver.FindElement(By.Id("item-1"));
-            textBoxButton.Click();
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            var navigationButton = _driver.FindElement(By.Id("item-1"));
+            navigationButton.Click();
         }
 
         [Test]
         public void CheckAllByCheckingHomeCheckBox()
         {
-            var homeCheckBox = _driver.FindElement(By.XPath("//*[contains(@class, 'rct-checkbox')]"));
-            Assert.IsNotNull(homeCheckBox);
-            homeCheckBox.Click();
+            // Find and click main Home option
+            var homeOption = _driver.FindElement(By.XPath("//*[contains(@class, 'rct-checkbox')]"));
+            homeOption.Click();
+
+            // Check that checkbox is selected
+            var homeCheckbox = _driver.FindElement(By.XPath("//*[@id='tree-node-home']"));
+            Assert.IsTrue(homeCheckbox.Selected);
+
+            // Check that all options are displayed as selected in the results
             var selectedCheckboxes = _driver.FindElements(By.XPath("//div/span[contains(@class, 'text-success')]"));
             Assert.AreEqual(17, selectedCheckboxes.Count);
         }
@@ -38,12 +46,22 @@ namespace Homework11
         [Test]
         public void ExpandAllAndSelectDocumentsCheckbox()
         {
+            // Expand all options using Expand button
             var expandAllButton = _driver.FindElement(By.XPath("//button[contains(@title, 'Expand all')]"));
             expandAllButton.Click();
-            var documentsCheckbox = _driver.FindElement(By.XPath("//span/label[@for='tree-node-documents']"));
-            documentsCheckbox.Click();
-            var generalOfficeOption = _driver.FindElement(By.XPath("//input[@id='tree-node-general']"));
-            Assert.IsTrue(generalOfficeOption.Selected);
+
+            // Click Documents option
+            var documentsOption = _driver.FindElement(By.XPath("//span/label[@for='tree-node-documents']"));
+            documentsOption.Click();
+
+            // Assert that all Documents checkboxes are checked
+            var allDocumentsOptions = _driver.FindElements(By.XPath("//li[@class='rct-node rct-node-parent rct-node-expanded'][2]//child::input"));
+            foreach (var document in allDocumentsOptions)
+            {
+                Assert.IsTrue(document.Selected, $"The option {document} is not selected!");
+            }
+
+            // Check that selected options are displayed as selected in the results
             var selectedCheckboxes = _driver.FindElements(By.XPath("//div/span[contains(@class, 'text-success')]"));
             ScrollToElement(selectedCheckboxes[0]);
             Assert.AreEqual(10, selectedCheckboxes.Count);

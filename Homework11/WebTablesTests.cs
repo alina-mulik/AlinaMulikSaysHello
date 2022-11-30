@@ -9,7 +9,6 @@ namespace Homework11
     {
         private IWebDriver _driver;
         private IJavaScriptExecutor _javascriptExecutor;
-        private Actions _actions;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -17,7 +16,6 @@ namespace Homework11
             _driver = new ChromeDriver();
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
-            _actions = new Actions(_driver);
         }
 
         [SetUp]
@@ -33,7 +31,11 @@ namespace Homework11
         {
             var deletedEntryFirstName = _driver.FindElement(By.XPath("(//*[@role=\"columnheader\"]/following::div" +
                 "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1])[1]")).Text;
+
+            // Delete First row
             DeleteRow(1);
+
+            // Get all First names after deletion of the first row
             var firstNameColumnValues = _driver.FindElements(By.XPath("//*[@role=\"columnheader\"]/following::div" +
                 "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1]"));
             var listOfFirstNames = new List<string>();
@@ -41,6 +43,8 @@ namespace Homework11
             {
                 listOfFirstNames.Add(firstNameColumnValue.Text);
             }
+
+            // Check that deleted First Name is not there and check the count
             Assert.IsFalse(listOfFirstNames.Contains(deletedEntryFirstName));
             Assert.AreEqual(2, listOfFirstNames.Count);
         }
@@ -51,8 +55,12 @@ namespace Homework11
             var searchBar = _driver.FindElement(By.XPath("//*[@id='searchBox']"));
             var lensIconButton = _driver.FindElement(By.XPath("//*[@id='basic-addon2']"));
             var firstNameValueForSearch = "Alden";
+
+            // Search for the entry by First Name
             searchBar.SendKeys(firstNameValueForSearch);
             lensIconButton.Click();
+
+            // Get Search result and check the count and that the selected first name is there
             var searchResult = _driver.FindElements(By.XPath("//*[@role=\"columnheader\"]/following::div" +
                 "[@class='rt-tr -even' or @class='rt-tr -odd']/div[@role='gridcell'][1]"));
             Assert.AreEqual(1, searchResult.Count());

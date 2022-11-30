@@ -25,18 +25,24 @@ namespace Homework11
         public void SetUp()
         {
             _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var textBoxButton = _driver.FindElement(By.Id("item-4"));
-            ScrollToElement(textBoxButton);
-            textBoxButton.Click();
+            var navigationButton = _driver.FindElement(By.Id("item-4"));
+            ScrollToElement(navigationButton);
+            navigationButton.Click();
         }
 
         [Test]
         public void DoubleClickTest()
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
-            var doubleClickButton = _driver.FindElement(By.XPath("//button[@id='doubleClickBtn']"));
-            _actions.DoubleClick(doubleClickButton).Perform();
             var expectedResultText = "You have done a double click";
+
+            // Find button element
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            var doubleClickButton = _driver.FindElement(By.XPath("//button[@id='doubleClickBtn']"));
+
+            // Perform double-click
+            _actions.DoubleClick(doubleClickButton).Perform();
+
+            // Wait when message is dispalyed and check it
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//p[@id='doubleClickMessage']")));
             var actualResultText = _driver.FindElement(By.XPath("//p[@id='doubleClickMessage']"));
             Assert.AreEqual(expectedResultText, actualResultText.Text);
@@ -45,10 +51,16 @@ namespace Homework11
         [Test]
         public void RightClickButtonTest()
         {
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
-            var rightClickButton = _driver.FindElement(By.XPath("//button[@id='rightClickBtn']"));
-            _actions.ContextClick(rightClickButton).Perform();
             var expectedResultText = "You have done a right click";
+
+            // Find button element
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            var rightClickButton = _driver.FindElement(By.XPath("//button[@id='rightClickBtn']"));
+
+            // Perform rght-click
+            _actions.ContextClick(rightClickButton).Perform();
+
+            // Wait when message is dispalyed and check it
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//p[@id='rightClickMessage']")));
             var actualResultText = _driver.FindElement(By.XPath("//p[@id='rightClickMessage']"));
             Assert.AreEqual(expectedResultText, actualResultText.Text);
