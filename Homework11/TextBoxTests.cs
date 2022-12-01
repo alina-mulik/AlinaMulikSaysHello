@@ -15,14 +15,15 @@ namespace Homework11
             _driver = new ChromeDriver();
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            var navigationButton = _driver.FindElement(By.Id("item-0"));
+            navigationButton.Click();
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var navigationButton = _driver.FindElement(By.Id("item-0"));
-            navigationButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]
@@ -43,6 +44,8 @@ namespace Homework11
             currentAddress.SendKeys(textTextValue);
             var permanentAddress = _driver.FindElement(By.Id("permanentAddress"));
             permanentAddress.SendKeys(textTextValue);
+
+            // Find Submit button and click it
             var submitButton = _driver.FindElement(By.Id("submit"));
             ScrollToElementAndClick(submitButton);
 
@@ -71,6 +74,8 @@ namespace Homework11
             {
                 input.SendKeys(textTextValue);
             }
+
+            // Find Submit button and click it
             var submitButton = _driver.FindElement(By.Id("submit"));
             ScrollToElementAndClick(submitButton);
 

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Linq;
 
 namespace Homework11
 {
@@ -16,15 +15,16 @@ namespace Homework11
             _driver = new ChromeDriver();
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            var navigationButton = _driver.FindElement(By.Id("item-1"));
+            navigationButton.Click();
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            var navigationButton = _driver.FindElement(By.Id("item-1"));
-            navigationButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]
@@ -76,7 +76,6 @@ namespace Homework11
         private void ScrollToElement(IWebElement element)
         {
             _javascriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-            element.Click();
         }
     }
 }

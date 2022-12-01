@@ -15,16 +15,16 @@ namespace Homework11
             _driver = new ChromeDriver();
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            var navigationButton = _driver.FindElement(By.Id("item-6"));
+            ScrollToElement(navigationButton);
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            var navigationButton = _driver.FindElement(By.Id("item-6"));
-            ScrollToElement(navigationButton);
-            navigationButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace Homework11
             var contentTypeHeaderContent = response.Content.Headers.ContentType.ToString();
 
             // Check image format
-            Assert.AreEqual("image/jpeg", contentTypeHeaderContent, $"Image format is incorrect! Should be \"image/jpeg\", but it was {contentTypeHeaderContent}");
+            Assert.AreEqual("text/html; charset=utf-8", contentTypeHeaderContent);
         }
 
         [OneTimeTearDown]

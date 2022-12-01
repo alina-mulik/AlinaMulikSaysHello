@@ -13,15 +13,16 @@ namespace Homework11
         {
             _driver = new ChromeDriver();
             _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            var navigationButton = _driver.FindElement(By.Id("item-2"));
+            navigationButton.Click();
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            var navigationButton = _driver.FindElement(By.Id("item-2"));
-            navigationButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]

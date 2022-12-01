@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
 
 namespace Homework11
 {
@@ -16,14 +15,15 @@ namespace Homework11
             _driver = new ChromeDriver();
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            var textBoxButton = _driver.FindElement(By.Id("item-3"));
+            textBoxButton.Click();
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var textBoxButton = _driver.FindElement(By.Id("item-3"));
-            textBoxButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]
@@ -71,12 +71,6 @@ namespace Homework11
         public void OneTimeTearDown()
         {
             _driver.Quit();
-        }
-
-        private void ScrollToElement(IWebElement element)
-        {
-            _javascriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-            element.Click();
         }
 
         private void DeleteRow(int rowIndex)

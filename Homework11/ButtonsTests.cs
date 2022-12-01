@@ -11,6 +11,7 @@ namespace Homework11
         private IWebDriver _driver;
         private IJavaScriptExecutor _javascriptExecutor;
         private Actions _actions;
+        private WebDriverWait _wait;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
@@ -19,15 +20,17 @@ namespace Homework11
             _javascriptExecutor = (IJavaScriptExecutor)_driver;
             _driver.Manage().Window.Maximize();
             _actions = new Actions(_driver);
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
+            var navigationButton = _driver.FindElement(By.Id("item-4"));
+            ScrollToElement(navigationButton);
+            navigationButton.Click();
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            var navigationButton = _driver.FindElement(By.Id("item-4"));
-            ScrollToElement(navigationButton);
-            navigationButton.Click();
+            _driver.Navigate().Refresh();
         }
 
         [Test]
@@ -36,15 +39,14 @@ namespace Homework11
             var expectedResultText = "You have done a double click";
 
             // Find button element
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
             var doubleClickButton = _driver.FindElement(By.XPath("//button[@id='doubleClickBtn']"));
+            ScrollToElement(doubleClickButton);
 
             // Perform double-click
-            _actions.DoubleClick(doubleClickButton).Perform();
+            _actions.DoubleClick(doubleClickButton).Build().Perform();
 
             // Wait when message is dispalyed and check it
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//p[@id='doubleClickMessage']")));
-            var actualResultText = _driver.FindElement(By.XPath("//p[@id='doubleClickMessage']"));
+            var actualResultText = _wait.Until(_ => _driver.FindElement(By.XPath("//p[@id='doubleClickMessage']")));
             Assert.AreEqual(expectedResultText, actualResultText.Text);
         }
 
@@ -54,15 +56,14 @@ namespace Homework11
             var expectedResultText = "You have done a right click";
 
             // Find button element
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
             var rightClickButton = _driver.FindElement(By.XPath("//button[@id='rightClickBtn']"));
+            ScrollToElement(rightClickButton);
 
             // Perform rght-click
             _actions.ContextClick(rightClickButton).Perform();
 
             // Wait when message is dispalyed and check it
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//p[@id='rightClickMessage']")));
-            var actualResultText = _driver.FindElement(By.XPath("//p[@id='rightClickMessage']"));
+            var actualResultText = _wait.Until(_ => _driver.FindElement(By.XPath("//p[@id='rightClickMessage']")));
             Assert.AreEqual(expectedResultText, actualResultText.Text);
         }
 
@@ -75,7 +76,6 @@ namespace Homework11
         private void ScrollToElement(IWebElement element)
         {
             _javascriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-            element.Click();
         }
     }
 }

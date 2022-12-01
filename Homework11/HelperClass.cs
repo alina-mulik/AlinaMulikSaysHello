@@ -8,7 +8,7 @@
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var newRandomString = Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray();
 
-            return String.Join("", newRandomString);
+            return new string(newRandomString);
         }
     }
 }
