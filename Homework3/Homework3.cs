@@ -1,4 +1,4 @@
-﻿namespace AlinaMulikSaysHello
+﻿namespace Homework3
 {
     public class Homework3
     {
@@ -46,9 +46,9 @@
             {
                 try
                 {
-                    var numberOfYears = Int32.Parse(daysQuantity) / 365;
-                    var numberOfMonth = (Int32.Parse(daysQuantity) % 365) / 30;
-                    var numberOfDays = (Int32.Parse(daysQuantity) % 365) % 30;
+                    var numberOfYears = int.Parse(daysQuantity) / 365;
+                    var numberOfMonth = int.Parse(daysQuantity) % 365 / 30;
+                    var numberOfDays = int.Parse(daysQuantity) % 365 % 30;
                     Console.WriteLine(
                         $"You've entered: {numberOfYears} years, {numberOfMonth} month, {numberOfDays} days.");
                 }
@@ -70,7 +70,7 @@
             var n = Console.ReadLine();
             try
             {
-                var parsedN = Int32.Parse(n);
+                var parsedN = int.Parse(n);
                 var result = parsedN + parsedN * 2;
                 Console.WriteLine(result);
             }
@@ -181,7 +181,7 @@
             {
                 var convertedNum = Convert.ToInt32(num);
                 Console.WriteLine(
-                    (convertedNum % 2 == 0) ? "The entered number is even." : "The entered number is odd.");
+                    convertedNum % 2 == 0 ? "The entered number is even." : "The entered number is odd.");
             }
             catch (FormatException)
             {
@@ -238,31 +238,31 @@
                 var convertedSecondNumber = Convert.ToInt32(secondNumber);
                 switch (operation)
                 {
-                    case ("+"):
-                    {
-                        Console.WriteLine($"{convertedFirstNumber + convertedSecondNumber}");
-                        break;
-                    }
-                    case ("-"):
-                    {
-                        Console.WriteLine($"{convertedFirstNumber - convertedSecondNumber}");
-                        break;
-                    }
-                    case ("*"):
-                    {
-                        Console.WriteLine($"{convertedFirstNumber * convertedSecondNumber}");
-                        break;
-                    }
-                    case ("/"):
-                    {
-                        Console.WriteLine($"{convertedFirstNumber / convertedSecondNumber}");
-                        break;
-                    }
+                    case "+":
+                        {
+                            Console.WriteLine($"{convertedFirstNumber + convertedSecondNumber}");
+                            break;
+                        }
+                    case "-":
+                        {
+                            Console.WriteLine($"{convertedFirstNumber - convertedSecondNumber}");
+                            break;
+                        }
+                    case "*":
+                        {
+                            Console.WriteLine($"{convertedFirstNumber * convertedSecondNumber}");
+                            break;
+                        }
+                    case "/":
+                        {
+                            Console.WriteLine($"{convertedFirstNumber / convertedSecondNumber}");
+                            break;
+                        }
                     default:
-                    {
-                        Console.WriteLine("Sorry. I don't know this type of operation.");
-                        break;
-                    }
+                        {
+                            Console.WriteLine("Sorry. I don't know this type of operation.");
+                            break;
+                        }
                 }
             }
             catch (FormatException)

@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AlinaMulikSaysHello
+namespace Homework4
 {
     public class Homework4
     {
