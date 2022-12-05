@@ -75,9 +75,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework11", "Homework11\Ho
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenericsHomework10", "GenericsHomework10", "{A9037E18-8765-489C-AF85-40D9141F02C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsMain", "GenericsMain\GenericsMain.csproj", "{581A0025-9BEE-454C-81CA-7EF3C5B90442}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericsMain", "GenericsMain\GenericsMain.csproj", "{581A0025-9BEE-454C-81CA-7EF3C5B90442}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericClasses", "GenericClasses\GenericClasses.csproj", "{F473B402-3625-4632-BB41-53780B007354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericClasses", "GenericClasses\GenericClasses.csproj", "{F473B402-3625-4632-BB41-53780B007354}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocatorsHomework12", "LocatorsHomework12", "{97F4B70A-A516-4A76-81FE-56DA7F4C8817}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Documents\MULIK HOMEWORK 12.docx = ..\..\..\Documents\MULIK HOMEWORK 12.docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
