@@ -1,41 +1,33 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
+using Homework11.PageObjects.DemoQA;
+using Homework11.Common.Drivers;
+using Homework11.Data;
+using Homework11.Data.Constants;
 
-namespace Homework11
+namespace Homework11.Tests.DemoQA.Elements
 {
-    public class BrokenLinksImagesTests
+    public class BrokenLinksImagesTests : BaseTest
     {
-        private IWebDriver _driver;
-        private IJavaScriptExecutor _javascriptExecutor;
-
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            _driver = new ChromeDriver();
-            _javascriptExecutor = (IJavaScriptExecutor)_driver;
-            _driver.Manage().Window.Maximize();
-            _driver.Navigate().GoToUrl("https://demoqa.com/elements");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            var navigationButton = _driver.FindElement(By.Id("item-6"));
-            ScrollToElement(navigationButton);
+            WebDriverFactory.Driver.Navigate().GoToUrl(TestSettings.DemoQAElementsUrl);
+            GenericPages.BaseDemoQaPage.ClickOnElementsSubCategory(ElementsCategories.BrokenLinksImages);
         }
 
         [SetUp]
         public void SetUp()
         {
-            _driver.Navigate().Refresh();
+            WebDriverFactory.Driver.Navigate().Refresh();
         }
 
         [Test]
         public async Task CheckValidImageTest()
         {
-            // Find image element
             using var client = new HttpClient();
-            var validImageElement = _driver.FindElement(By.XPath("//p[contains(text(),'Valid image')]//following::img"));
 
-            // Get Image src attribute
-            var srcAttribute = validImageElement.GetAttribute("src");
+            // Get valid Image src attribute
+            var srcAttribute = GenericPages.BrokenLinksImagesPage.GetValidImageAttribute("src");
             Assert.IsNotNull(srcAttribute);
 
             // Get response and its content after sending the request to image link
@@ -51,12 +43,10 @@ namespace Homework11
         [Test]
         public async Task CheckInvalidImageTest()
         {
-            // Find image element
             using var client = new HttpClient();
-            var invalidImageElement = _driver.FindElement(By.XPath("//p[contains(text(),'Broken image')]//following::img"));
 
-            // Get Image src attribute
-            var srcAttribute = invalidImageElement.GetAttribute("src");
+            // Get invalid Image src attribute
+            var srcAttribute = GenericPages.BrokenLinksImagesPage.GetInvalidImageAttribute("src");
             Assert.IsNotNull(srcAttribute);
 
             // Get response and its content after sending the request to image link
@@ -67,18 +57,6 @@ namespace Homework11
 
             // Check image format
             Assert.AreEqual("text/html; charset=utf-8", contentTypeHeaderContent);
-        }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            _driver.Quit();
-        }
-
-        private void ScrollToElement(IWebElement element)
-        {
-            _javascriptExecutor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-            element.Click();
         }
     }
 }

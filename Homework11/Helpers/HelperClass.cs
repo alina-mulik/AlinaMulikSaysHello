@@ -1,4 +1,4 @@
-﻿namespace Homework11
+﻿namespace Homework11.Helpers
 {
     public static class HelperClass
     {
@@ -10,5 +10,7 @@
 
             return new string(newRandomString);
         }
+
+        public static string RootDir() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
     }
 }

@@ -8,12 +8,23 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.3.1" />
     <PackageReference Include="Selenium.Support" Version="4.6.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.6.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="107.0.5304.6200" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="FilesForUpload\TextFile1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Tests\testsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
