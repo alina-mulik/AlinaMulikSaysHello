@@ -1,6 +1,6 @@
-﻿using Homework13.Common.WebElements;
+﻿using System.Collections.ObjectModel;
+using Homework13.Common.WebElements;
 using OpenQA.Selenium;
-using System.Collections.ObjectModel;
 
 namespace Homework13.PageObjects.DemoQA.Elements
 {
