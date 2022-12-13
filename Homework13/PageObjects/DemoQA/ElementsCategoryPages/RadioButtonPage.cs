@@ -1,7 +1,7 @@
 ﻿using Homework13.Common.WebElements;
 using OpenQA.Selenium;
 
-namespace Homework13.PageObjects.DemoQA.Elements
+namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 {
     public class RadioButtonPage
     {
@@ -19,7 +19,7 @@ namespace Homework13.PageObjects.DemoQA.Elements
 
         public string GetResultOutputText() => _resultOutput.Text;
 
-        public string GetNoRadioButtonAttribute(string attribute) => _noRadioButton.GetAttribute(attribute);
+        public bool IsNoRadioButtonDisabled() => _noRadioButton.IsElementDisabledByAtttribute();
 
         public bool IsNoRadioButtonEnabled() => _noRadioButton.Enabled;
     }

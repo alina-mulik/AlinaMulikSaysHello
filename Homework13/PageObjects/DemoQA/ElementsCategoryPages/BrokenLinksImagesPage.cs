@@ -1,7 +1,7 @@
 ﻿using Homework13.Common.WebElements;
 using OpenQA.Selenium;
 
-namespace Homework13.PageObjects.DemoQA.Elements
+namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 {
     public class BrokenLinksImagesPage
     {

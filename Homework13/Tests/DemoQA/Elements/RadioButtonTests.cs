@@ -42,8 +42,8 @@ namespace Homework13.Tests.DemoQA.Elements
             GenericPages.RadioButtonPage.ClickNoRadioButtonOption();
 
             // Get attribute 'disabled' of the 'no' radiobutton and check that it's truly disabled
-            var disabledAttribute = GenericPages.RadioButtonPage.GetNoRadioButtonAttribute("disabled");
-            Assert.AreEqual("true", disabledAttribute);
+            var disabledAttribute = GenericPages.RadioButtonPage.IsNoRadioButtonDisabled();
+            Assert.IsTrue(disabledAttribute);
             Assert.IsFalse(GenericPages.RadioButtonPage.IsNoRadioButtonEnabled());
         }
     }

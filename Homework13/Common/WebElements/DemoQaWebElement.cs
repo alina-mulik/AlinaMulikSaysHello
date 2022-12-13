@@ -73,6 +73,8 @@ namespace Homework13.Common.WebElements
 
         public ISearchContext GetShadowRoot() => WebElement.GetShadowRoot();
 
+        public string GetElementPlaceholder() => WebElement.GetAttribute("placeholder");
+
         public void SendKeys(string text) => WebElement.SendKeys(text);
 
         public void Submit() => WebElement.Submit();
@@ -82,5 +84,15 @@ namespace Homework13.Common.WebElements
 
         // method to get value of class attribute
         public string GetValueOfClassAttribute() => GetAttribute("class");
+
+        public bool IsElementDisabledByAtttribute()
+        {
+            var isDisabled = WebElement.GetAttribute("disabled");
+            if (isDisabled != "true")
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

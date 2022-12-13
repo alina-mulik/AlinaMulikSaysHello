@@ -29,7 +29,7 @@ namespace Homework13.Tests.DemoQA.Elements
             // Perform double-click on double-click button
             GenericPages.ButtonsPage.DoubleClickDoubleClickButton();
 
-            // Wait when message is dispalyed and check it
+            // Wait when message is displayed and check it
             var actualResultText = GenericPages.ButtonsPage.GetDoubleClickOutputText();
             Assert.AreEqual(expectedResultText, actualResultText);
         }
@@ -39,10 +39,10 @@ namespace Homework13.Tests.DemoQA.Elements
         {
             var expectedResultText = "You have done a right click";
 
-            // Perform rght-click
+            // Perform right-click
             GenericPages.ButtonsPage.RightClickRightClickButton();
 
-            // Wait when message is dispalyed and check it
+            // Wait when message is displayed and check it
             var actualResultText = GenericPages.ButtonsPage.GetRightClickOutputText();
             Assert.AreEqual(expectedResultText, actualResultText);
         }

@@ -1,4 +1,4 @@
-﻿using Homework13.PageObjects.DemoQA.Elements;
+﻿using Homework13.PageObjects.DemoQA.ElementsCategoryPages;
 
 namespace Homework13.PageObjects.DemoQA
 {

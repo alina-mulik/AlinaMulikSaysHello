@@ -1,12 +1,10 @@
-﻿using System.Collections.ObjectModel;
-using Homework13.Common.WebElements;
+﻿using Homework13.Common.WebElements;
 using OpenQA.Selenium;
 
-namespace Homework13.PageObjects.DemoQA.Elements
+namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 {
     public class TextBoxPage
     {
-        private static DemoQaWebElement _userFormElement = new(By.XPath("//*[@id='userForm']"));
         private DemoQaWebElement _fullNameInput = new(By.XPath("//*[@id='userName']"));
         private DemoQaWebElement _fullNameOutput = new(By.XPath("//*[@class='mb-1'][@id='name']"));
         private DemoQaWebElement _emailInput = new(By.CssSelector("#userEmail"));
@@ -17,11 +15,12 @@ namespace Homework13.PageObjects.DemoQA.Elements
         private DemoQaWebElement _permanentAddressOutput = new(By.XPath("//*[@class='mb-1'][@id='permanentAddress']"));
         private DemoQaWebElement _submitButton = new(By.Id("submit"));
         private DemoQaWebElement _resultBox = new(By.XPath("//*[@id='output']/div"));
-        private ReadOnlyCollection<IWebElement> _allInputsList = _userFormElement.FindElements(By.XPath("//*[contains(@class, 'form-control')]"));
 
         public void EnterValueIntoAllInputs(string value)
         {
-            foreach (var input in _allInputsList)
+            var userFormElement = new DemoQaWebElement(By.XPath("//*[@id='userForm']"));
+            var allInputsList = userFormElement.FindElements(By.XPath("//*[contains(@class, 'form-control')]"));
+            foreach (var input in allInputsList)
             {
                 input.SendKeys(value);
             }
@@ -31,9 +30,9 @@ namespace Homework13.PageObjects.DemoQA.Elements
 
         public bool IsResultBoxDisplayed() => _resultBox.Displayed;
 
-        public string GetFullNameInputPlaceholder() => _fullNameInput.GetAttribute("placeholder");
+        public string GetFullNameInputPlaceholder() => _fullNameInput.GetElementPlaceholder();
 
-        public string GetEmailInputPlaceholder() => _emailInput.GetAttribute("placeholder");
+        public string GetEmailInputPlaceholder() => _emailInput.GetElementPlaceholder();
 
         public string GetCurrentAddressInputPlaceholder() => _currentAddressInput.GetAttribute("placeholder");
 

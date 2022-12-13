@@ -3,7 +3,7 @@ using Homework13.Common.Extensions;
 using Homework13.Common.WebElements;
 using OpenQA.Selenium;
 
-namespace Homework13.PageObjects.DemoQA.Elements
+namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 {
     public class DynamicPropertiesPage
     {
@@ -21,10 +21,10 @@ namespace Homework13.PageObjects.DemoQA.Elements
 
         public void WaitTillDangerButtonColorIsChanged(string colorBefore)
         {
-            WebDriverFactory.Driver.GetWebDriverWait(pollingInterval: TimeSpan.FromSeconds(1)).Until(GenericPages.DynamicPropertiesPage.IsColorChangedCondition(colorBefore));
+            WebDriverFactory.Driver.GetWebDriverWait(pollingInterval: TimeSpan.FromSeconds(1)).Until(GenericPages.DynamicPropertiesPage.GetElementWithChangedColor(colorBefore));
         }
 
-        private Func<IWebDriver, IWebElement> IsColorChangedCondition(string rgbaInitialColor)
+        private Func<IWebDriver, IWebElement> GetElementWithChangedColor(string rgbaInitialColor)
         {
             return delegate (IWebDriver driver)
             {

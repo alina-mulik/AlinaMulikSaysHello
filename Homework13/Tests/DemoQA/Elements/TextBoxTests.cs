@@ -1,10 +1,10 @@
 ﻿using Homework13.Common.Drivers;
 using Homework13.Data;
+using Homework13.Data.Constants;
 using Homework13.Helpers;
 using Homework13.PageObjects.DemoQA;
-using Homework13.PageObjects.DemoQA.Elements;
+using Homework13.PageObjects.DemoQA.ElementsCategoryPages;
 using NUnit.Framework;
-using ElementsCategories = Homework13.Data.Constants.ElementsCategories;
 
 namespace Homework13.Tests.DemoQA.Elements
 {
@@ -27,8 +27,8 @@ namespace Homework13.Tests.DemoQA.Elements
         public void TextBoxWithValidValuesFullFlowTest()
         {
             // Fill in all the input fields
-            var textTextValue = HelperClass.RandomString(8);
-            var validEmail = $"{HelperClass.RandomString(8)}@gmail.com";
+            var textTextValue = RandomHelper.RandomString(8);
+            var validEmail = $"{RandomHelper.RandomString(8)}@gmail.com";
             Assert.IsTrue(GenericPages.TextBoxPage.IsFullNameInputDisplayed());
             Assert.AreEqual("Full Name", GenericPages.TextBoxPage.GetFullNameInputPlaceholder());
             GenericPages.TextBoxPage.EnterValueIntoFullNameInput(textTextValue);
@@ -56,7 +56,7 @@ namespace Homework13.Tests.DemoQA.Elements
         public void TextBoxWithInvalidEmailFullFlowTest()
         {
             // Fill in input fields
-            var textTextValue = HelperClass.RandomString(8);
+            var textTextValue = RandomHelper.RandomString(8);
             var textBoxPage = new TextBoxPage();
             textBoxPage.EnterValueIntoAllInputs(textTextValue);
 

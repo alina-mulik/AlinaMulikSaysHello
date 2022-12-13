@@ -26,7 +26,7 @@ namespace Homework13.Tests.DemoQA.Elements
         {
             var fileName = "TextFile1.txt";
             var expectedPathPart = "C:\\fakepath\\";
-            string fileFullPath = Helpers.HelperClass.RootDir() + "FilesForUpload\\" + fileName;
+            string fileFullPath = Helpers.FilesHelper.FilesForUploadDir() + fileName;
 
             // Upload the file
             GenericPages.UploadAndDownloadPage.UploadADocument(fileFullPath);

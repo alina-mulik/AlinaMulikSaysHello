@@ -8,6 +8,8 @@ namespace Homework13.Tests.DemoQA.Elements
 {
     public class DynamicPropertiesTests : BaseTest
     {
+        const string RedColor = "rgba(220, 53, 69, 1)";
+
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
@@ -24,7 +26,7 @@ namespace Homework13.Tests.DemoQA.Elements
         [Test]
         public void WaitForButtonTest()
         {
-            // Waiter with 15 seconds timeout by default is already applied in WebDriverExtesions
+            // Waiter with 15 seconds timeout by default is already applied in WebDriverExtensions
             // Check that button is displayed
             Assert.IsTrue(GenericPages.DynamicPropertiesPage.IsButtonToWaitForDisplayed());
         }
@@ -40,7 +42,7 @@ namespace Homework13.Tests.DemoQA.Elements
             var colorAfter = GenericPages.DynamicPropertiesPage.GetCssColorValueOfDangerButton();
 
             // Check color
-            Assert.AreEqual("rgba(220, 53, 69, 1)", colorAfter);
+            Assert.AreEqual(RedColor, colorAfter);
         }
     }
 }

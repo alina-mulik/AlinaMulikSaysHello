@@ -42,6 +42,24 @@ namespace Homework13.Common.Drivers
 
         public static void SwitchToWindow(int windowIndex) => Driver.SwitchTo().Window(Driver.WindowHandles[windowIndex]);
 
+        public static void CloseAllWindowsAndSwitchToFirst()
+        {
+            var collectionOfWindows = Driver.WindowHandles;
+            if (collectionOfWindows.Count > 1)
+            {
+                foreach (var window in collectionOfWindows)
+                {
+                    var indexOfWindow = collectionOfWindows.IndexOf(window);
+                    if (indexOfWindow != 0)
+                    {
+                        SwitchToWindow(indexOfWindow);
+                        Driver.Close();
+                    }
+                }
+                SwitchToWindow(0);
+            }
+        }
+
         private static void InitializeDriver()
         {
             Driver = TestSettings.Browser switch
@@ -52,7 +70,6 @@ namespace Homework13.Common.Drivers
             };
 
             Driver.Manage().Window.Maximize();
-            Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
         }
     }
 }

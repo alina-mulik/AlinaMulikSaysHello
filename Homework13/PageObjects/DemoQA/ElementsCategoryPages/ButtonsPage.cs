@@ -3,19 +3,21 @@ using Homework13.Common.Extensions;
 using Homework13.Common.WebElements;
 using OpenQA.Selenium;
 
-namespace Homework13.PageObjects.DemoQA.Elements
+namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 {
     public class ButtonsPage
     {
-        private DemoQaWebElement _doubleClickButton = new(By.XPath("//button[@id='doubleClickBtn']"));
+        private static string _doubleClickButtonLocator = "//button[@id='doubleClickBtn']";
+        private static string _rightClickButtonLocator = "//button[@id='rightClickBtn']";
+        private DemoQaWebElement _doubleClickButton = new(By.XPath(_doubleClickButtonLocator));
         private DemoQaWebElement _doubleClickOutput = new(By.XPath("//p[@id='doubleClickMessage']"));
-        private DemoQaWebElement _rightClickButton = new(By.XPath("//button[@id='rightClickBtn']"));
+        private DemoQaWebElement _rightClickButton = new(By.XPath(_rightClickButtonLocator));
         private DemoQaWebElement _rightClickOutput = new(By.XPath("//p[@id='rightClickMessage']"));
 
         public void WaitUntilButtonsAreClickable()
         {
-            WebDriverFactory.Driver.GetWebDriverWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//button[@id='rightClickBtn']")));
-            WebDriverFactory.Driver.GetWebDriverWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//button[@id='doubleClickBtn']")));
+            WebDriverFactory.Driver.GetWebDriverWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_rightClickButtonLocator)));
+            WebDriverFactory.Driver.GetWebDriverWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(_doubleClickButtonLocator)));
         }
 
         public void DoubleClickDoubleClickButton()
@@ -28,7 +30,7 @@ namespace Homework13.PageObjects.DemoQA.Elements
 
         public void RightClickRightClickButton()
         {
-            _doubleClickButton.ScrollIntoView();
+            _rightClickButton.ScrollIntoView();
             _rightClickButton.RightClick();
         }
 

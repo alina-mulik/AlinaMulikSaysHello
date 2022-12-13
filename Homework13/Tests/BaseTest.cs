@@ -8,13 +8,13 @@ namespace Homework13.Tests
     public class BaseTest
     {
         [OneTimeSetUp]
-        public void OneTimeSetUp()
+        public void BaseTestOneTimeSetUp()
         {
             WebDriverFactory.Driver.Navigate().GoToUrl(TestSettings.DemoQaHomePageUrl);
         }
 
         [TearDown]
-        public void TearDown()
+        public void BaseTestTearDown()
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
@@ -23,7 +23,7 @@ namespace Homework13.Tests
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown()
+        public void BaseTestOneTimeTearDown()
         {
             WebDriverFactory.QuitDriver();
         }

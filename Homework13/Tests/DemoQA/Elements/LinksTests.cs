@@ -24,7 +24,14 @@ namespace Homework13.Tests.DemoQA.Elements
         [Test]
         public void LinkWithOpenNewTabTest()
         {
-            var expectedResultList = new List<string> { "Elements", "Forms", "Alerts, Frame & Windows", "Widgets", "Interactions", "Book Store Application" };
+            var expectedResultList = new List<string>
+                {
+                    "Elements",
+                    "Forms",
+                    "Alerts, Frame & Windows",
+                    "Widgets", "Interactions",
+                    "Book Store Application"
+                };
 
             // Click on the Link
             GenericPages.LinksPage.ClickHomeLink();
@@ -36,6 +43,12 @@ namespace Homework13.Tests.DemoQA.Elements
             Assert.AreEqual(TestSettings.DemoQaHomePageUrl, WebDriverFactory.GetCurrentUrl());
             var actualResultList = GenericPages.HomePage.GetListOfCategories();
             CollectionAssert.AreEquivalent(expectedResultList, actualResultList);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            WebDriverFactory.CloseAllWindowsAndSwitchToFirst();
         }
     }
 }
