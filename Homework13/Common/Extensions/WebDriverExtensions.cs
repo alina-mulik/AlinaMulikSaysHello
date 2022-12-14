@@ -20,6 +20,26 @@ namespace Homework13.Common.Extensions
             return webDriverWait;
         }
 
+        public static string GetCurrentUrl(this IWebDriver driver) => driver.Url;
+
+        public static void SwitchToWindow(this IWebDriver driver, int windowIndex) => driver.SwitchTo().Window(driver.WindowHandles[windowIndex]);
+
+        public static void CloseAllWindowsAndSwitchToFirst(this IWebDriver driver)
+        {
+            var collectionOfWindows = driver.WindowHandles;
+            if (collectionOfWindows.Count > 1)
+            {
+                var indexOfLastWindow = collectionOfWindows.Count - 1;
+                while (indexOfLastWindow != 0)
+                {
+                    driver.SwitchToWindow(indexOfLastWindow);
+                    driver.Close();
+                    indexOfLastWindow -= 1;
+                }
+                SwitchToWindow(driver, 0);
+            }
+        }
+
         // find web element method with explicit wait
         public static IWebElement GetWebElementWhenExists(this IWebDriver driver, By by) => driver.GetWebDriverWait().Until(drv => drv.FindElement(by));
     }

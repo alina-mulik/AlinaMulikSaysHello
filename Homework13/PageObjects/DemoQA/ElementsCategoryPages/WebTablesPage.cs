@@ -21,11 +21,8 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
         {
             var firstNameColumnHeader = new DemoQaWebElement(By.XPath("//div[@role='columnheader' and .//text() ='First Name']"));
             var allFirstNameCellsValues = firstNameColumnHeader.FindElements(By.XPath("(//div[@class='rt-tr -odd' or @class='rt-tr -even' ])/child::*[1]"));
-            var listOfFirstNameValues = new List<string>();
-            foreach (var element in allFirstNameCellsValues)
-            {
-                listOfFirstNameValues.Add(element.Text);
-            }
+            var listOfFirstNameValues = firstNameColumnHeader.FindElements(By.XPath("(//div[@Class='rt-tr -odd' or @Class='rt-tr -even' ])/child::*[1]"))
+                .Select(x => x.Text).ToList();
 
             return listOfFirstNameValues;
         }

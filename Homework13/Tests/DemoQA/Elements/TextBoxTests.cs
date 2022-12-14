@@ -27,8 +27,8 @@ namespace Homework13.Tests.DemoQA.Elements
         public void TextBoxWithValidValuesFullFlowTest()
         {
             // Fill in all the input fields
-            var textTextValue = RandomHelper.RandomString(8);
-            var validEmail = $"{RandomHelper.RandomString(8)}@gmail.com";
+            var textTextValue = RandomHelper.GetRandomString(8);
+            var validEmail = $"{RandomHelper.GetRandomString(8)}@gmail.com";
             Assert.IsTrue(GenericPages.TextBoxPage.IsFullNameInputDisplayed());
             Assert.AreEqual("Full Name", GenericPages.TextBoxPage.GetFullNameInputPlaceholder());
             GenericPages.TextBoxPage.EnterValueIntoFullNameInput(textTextValue);
@@ -56,7 +56,7 @@ namespace Homework13.Tests.DemoQA.Elements
         public void TextBoxWithInvalidEmailFullFlowTest()
         {
             // Fill in input fields
-            var textTextValue = RandomHelper.RandomString(8);
+            var textTextValue = RandomHelper.GetRandomString(8);
             var textBoxPage = new TextBoxPage();
             textBoxPage.EnterValueIntoAllInputs(textTextValue);
 

@@ -1,4 +1,5 @@
 ﻿using Homework13.Common.Drivers;
+using Homework13.Common.Extensions;
 using Homework13.Data;
 using Homework13.Data.Constants;
 using Homework13.PageObjects.DemoQA;
@@ -37,10 +38,10 @@ namespace Homework13.Tests.DemoQA.Elements
             GenericPages.LinksPage.ClickHomeLink();
 
             // Switch to new window
-            WebDriverFactory.SwitchToWindow(1);
+            WebDriverFactory.Driver.SwitchToWindow(1);
 
             // Check that it's a correct url and window by checking smth on the page
-            Assert.AreEqual(TestSettings.DemoQaHomePageUrl, WebDriverFactory.GetCurrentUrl());
+            Assert.AreEqual(TestSettings.DemoQaHomePageUrl, WebDriverFactory.Driver.GetCurrentUrl());
             var actualResultList = GenericPages.HomePage.GetListOfCategories();
             CollectionAssert.AreEquivalent(expectedResultList, actualResultList);
         }
@@ -48,7 +49,7 @@ namespace Homework13.Tests.DemoQA.Elements
         [TearDown]
         public void TearDown()
         {
-            WebDriverFactory.CloseAllWindowsAndSwitchToFirst();
+            WebDriverFactory.Driver.CloseAllWindowsAndSwitchToFirst();
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public static class RandomHelper
     {
-        public static string RandomString(int length)
+        public static string GetRandomString(int length)
         {
             var random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

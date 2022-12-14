@@ -11,7 +11,7 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
         private DemoQaWebElement _expandAllButton = new(By.XPath("//button[contains(@title, 'Expand all')]"));
         private DemoQaWebElement _documentsOption = new(By.XPath("//span/label[@for='tree-node-documents']"));
 
-        public bool IsHomeCheckoboxSelected() => _homeCheckbox.Selected;
+        public bool IsHomeCheckboxSelected() => _homeCheckbox.Selected;
 
         public void ClickHomeOption() => _homeOption.Click();
 
@@ -28,6 +28,7 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
         public ReadOnlyCollection<IWebElement> GetAllDocumentsOptions()
         {
             var allDocumentsOptions = _homeOption.FindElements(By.XPath("//li[@class='rct-node rct-node-parent rct-node-expanded'][2]//child::input"));
+
             return allDocumentsOptions;
         }
     }

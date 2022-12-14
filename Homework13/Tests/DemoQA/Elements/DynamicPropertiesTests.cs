@@ -8,8 +8,6 @@ namespace Homework13.Tests.DemoQA.Elements
 {
     public class DynamicPropertiesTests : BaseTest
     {
-        const string RedColor = "rgba(220, 53, 69, 1)";
-
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
@@ -34,6 +32,8 @@ namespace Homework13.Tests.DemoQA.Elements
         [Test]
         public void DangerRedTextButtonTest()
         {
+            const string RedColor = "rgba(220, 53, 69, 1)";
+
             // Get color before 5 sec and wait till the time runs out using another element which appears after 5 seconds
             var colorBefore = GenericPages.DynamicPropertiesPage.GetCssColorValueOfDangerButton();
             GenericPages.DynamicPropertiesPage.WaitTillDangerButtonColorIsChanged(colorBefore);

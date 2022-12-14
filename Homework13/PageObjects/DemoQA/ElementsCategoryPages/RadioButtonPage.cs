@@ -19,7 +19,7 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 
         public string GetResultOutputText() => _resultOutput.Text;
 
-        public bool IsNoRadioButtonDisabled() => _noRadioButton.IsElementDisabledByAtttribute();
+        public bool IsNoRadioButtonDisabled() => _noRadioButton.IsElementDisabledByAttribute();
 
         public bool IsNoRadioButtonEnabled() => _noRadioButton.Enabled;
     }

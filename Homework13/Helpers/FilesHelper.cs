@@ -2,13 +2,11 @@
 {
     public class FilesHelper
     {
-        public static string RootDir() => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
-
-        public static string FilesForUploadDir()
+        public static string GetFilesForUploadDir()
         {
-            var uploadsFolder = "FilesForUpload\\";
+            var uploadsFolder = AppContext.BaseDirectory + "FilesForUpload\\";
 
-            return RootDir() + uploadsFolder;
+            return uploadsFolder;
         }
     }
 }

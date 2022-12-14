@@ -28,7 +28,7 @@ namespace Homework13.Tests.DemoQA.Elements
             GenericPages.CheckBoxPage.ClickHomeOption();
 
             // Check that checkbox is selected
-            var homeCheckBoxSelected = GenericPages.CheckBoxPage.IsHomeCheckoboxSelected();
+            var homeCheckBoxSelected = GenericPages.CheckBoxPage.IsHomeCheckboxSelected();
             Assert.IsTrue(homeCheckBoxSelected);
 
             // Check that all options are displayed as selected in the results

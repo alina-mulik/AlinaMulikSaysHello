@@ -85,13 +85,14 @@ namespace Homework13.Common.WebElements
         // method to get value of class attribute
         public string GetValueOfClassAttribute() => GetAttribute("class");
 
-        public bool IsElementDisabledByAtttribute()
+        public bool IsElementDisabledByAttribute()
         {
             var isDisabled = WebElement.GetAttribute("disabled");
             if (isDisabled != "true")
             {
                 return false;
             }
+
             return true;
         }
     }

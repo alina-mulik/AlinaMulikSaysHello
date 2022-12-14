@@ -1,5 +1,7 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using Homework13.Data;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -36,28 +38,11 @@ namespace Homework13.Common.Drivers
         // create an instance of IJavaScriptExecutor
         public static IJavaScriptExecutor JavaScriptExecutor => (IJavaScriptExecutor)Driver;
 
-        public static void QuitDriver() => Driver.Quit();
-
-        public static string GetCurrentUrl() => Driver.Url;
-
-        public static void SwitchToWindow(int windowIndex) => Driver.SwitchTo().Window(Driver.WindowHandles[windowIndex]);
-
-        public static void CloseAllWindowsAndSwitchToFirst()
+        public static void QuitDriver()
         {
-            var collectionOfWindows = Driver.WindowHandles;
-            if (collectionOfWindows.Count > 1)
-            {
-                foreach (var window in collectionOfWindows)
-                {
-                    var indexOfWindow = collectionOfWindows.IndexOf(window);
-                    if (indexOfWindow != 0)
-                    {
-                        SwitchToWindow(indexOfWindow);
-                        Driver.Close();
-                    }
-                }
-                SwitchToWindow(0);
-            }
+            Driver.Quit();
+            Driver.Dispose();
+            DriverCollection.TryRemove(TestContextValues.ExecutableClassName, out _);
         }
 
         private static void InitializeDriver()
