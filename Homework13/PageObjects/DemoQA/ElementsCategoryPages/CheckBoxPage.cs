@@ -18,6 +18,7 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
         public int CountAllSelectedCheckboxesOutput()
         {
             var allSelectedCheckboxesOutput = _homeOption.FindElements(By.XPath("//div/span[contains(@class, 'text-success')]"));
+
             return allSelectedCheckboxesOutput.Count();
         }
 

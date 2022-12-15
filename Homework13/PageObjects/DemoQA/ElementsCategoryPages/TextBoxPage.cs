@@ -34,7 +34,7 @@ namespace Homework13.PageObjects.DemoQA.ElementsCategoryPages
 
         public string GetEmailInputPlaceholder() => _emailInput.GetElementPlaceholder();
 
-        public string GetCurrentAddressInputPlaceholder() => _currentAddressInput.GetAttribute("placeholder");
+        public string GetCurrentAddressInputPlaceholder() => _currentAddressInput.GetElementPlaceholder();
 
         public void EnterValueIntoFullNameInput(string value) => _fullNameInput.SendKeys(value);
 

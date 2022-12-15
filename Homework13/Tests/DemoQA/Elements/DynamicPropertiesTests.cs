@@ -32,7 +32,7 @@ namespace Homework13.Tests.DemoQA.Elements
         [Test]
         public void DangerRedTextButtonTest()
         {
-            const string RedColor = "rgba(220, 53, 69, 1)";
+            const string redColor = "rgba(220, 53, 69, 1)";
 
             // Get color before 5 sec and wait till the time runs out using another element which appears after 5 seconds
             var colorBefore = GenericPages.DynamicPropertiesPage.GetCssColorValueOfDangerButton();
@@ -42,7 +42,7 @@ namespace Homework13.Tests.DemoQA.Elements
             var colorAfter = GenericPages.DynamicPropertiesPage.GetCssColorValueOfDangerButton();
 
             // Check color
-            Assert.AreEqual(RedColor, colorAfter);
+            Assert.AreEqual(redColor, colorAfter);
         }
     }
 }
