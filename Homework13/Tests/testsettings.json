@@ -1,0 +1,14 @@
+{
+  "Common": {
+    "Browser": "Chrome",
+    "DemoQAUrls": {
+      "DemoQAHomePage": "https://demoqa.com/",
+      "DemoQAElements": "https://demoqa.com/elements",
+      "DemoQAForms": "https://demoqa.com/forms",
+      "DemoQAAlertsFrameWindows": "https://demoqa.com/alertsWindows",
+      "DemoQAWidgets": "https://demoqa.com/widgets",
+      "DemoQAInteractions": "https://demoqa.com/interaction",
+      "DemoQABookStore": "https://demoqa.com/books"
+    }
+  }
+}
