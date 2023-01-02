@@ -21,7 +21,7 @@ namespace Homework17.Tests
             var userToCreate = new UserToCreate(name, email, password, AvatarUrl);
 
             // Count all users before new user creation
-            var getAllUsersBeforeCreation = StoreService.GetAllUsersInfo().Count;
+            var getAllUsersBeforeCreationCount = StoreService.GetAllUsersInfo().Count;
 
             // Create user, check how much time it took and get new user Id
             // Almost sure that time evaluation is incorrect here, but I don't knowhow to do it differently  ¯\_(ツ)_/¯
@@ -32,8 +32,8 @@ namespace Homework17.Tests
 
             // Count all users after new user creation and compare counts
             var getAllUsersAfterCreation = StoreService.GetAllUsersInfo();
-            var getCountAfter = getAllUsersAfterCreation.Count;
-            Assert.AreNotEqual(getCountAfter, getAllUsersBeforeCreation);
+            var getAllUsersAfterTheCreationCount = getAllUsersAfterCreation.Count;
+            Assert.AreNotEqual(getAllUsersAfterTheCreationCount, getAllUsersBeforeCreationCount);
 
             // Check that Name of newly-created user exists in the list of users
             var listOfUserNames = getAllUsersAfterCreation.Select(x => x.name).ToList();
