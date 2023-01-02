@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Homework17.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Homework17.HttpClients
 {
@@ -103,7 +104,11 @@ namespace Homework17.HttpClients
             where TResponse : class
         {
             _httpClient = CreateHttpClientAndAddHeaders(headers);
-            var httpContentString = JsonConvert.SerializeObject(requestModel);
+            var contractResolver = new DefaultContractResolver()
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            };
+            var httpContentString = JsonConvert.SerializeObject(requestModel, new JsonSerializerSettings() { ContractResolver = contractResolver });
             var httpContent = new StringContent(httpContentString, Encoding.UTF8, "application/json");
             _httpRequestMessage = CreateHttpRequestMessage(requestUrl, httpMethod, httpContent);
             var httpResponse = _httpClient.SendAsync(_httpRequestMessage).Result;

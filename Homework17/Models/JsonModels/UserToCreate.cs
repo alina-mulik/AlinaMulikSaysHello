@@ -2,17 +2,17 @@
 {
     public class UserToCreate
     {
-        public string name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string avatar { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Avatar { get; set; }
 
         public UserToCreate(string name, string email, string password, string avatar)
         {
-            this.email = email;
-            this.name = name;
-            this.password = password;
-            this.avatar = avatar;
+            this.Email = email;
+            this.Name = name;
+            this.Password = password;
+            this.Avatar = avatar;
         }
     }
 }

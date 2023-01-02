@@ -2,13 +2,13 @@
 {
     public class User
     {
-        public int id { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string name { get; set; }
-        public string role { get; set; }
-        public string avatar { get; set; }
-        public DateTime creationAt { get; }
-        public DateTime updatedAt { get; }
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Role { get; set; }
+        public string Avatar { get; set; }
+        public DateTime CreationAt { get; }
+        public DateTime UpdatedAt { get; }
     }
 }

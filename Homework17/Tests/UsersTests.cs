@@ -28,7 +28,7 @@ namespace Homework17.Tests
             var createdUser = StoreService.CreateUserAndGetTimeElapsed(userToCreate, out var timeElapsed);
             Assert.AreEqual(HttpStatusCode.Created, createdUser.StatusCode);
             Assert.Less(timeElapsed, 1000);
-            var id = createdUser.ResponseModel.id;
+            var id = createdUser.ResponseModel.Id;
 
             // Count all users after new user creation and compare counts
             var getAllUsersAfterCreation = StoreService.GetAllUsersInfo();
@@ -36,13 +36,13 @@ namespace Homework17.Tests
             Assert.AreNotEqual(getAllUsersAfterTheCreationCount, getAllUsersBeforeCreationCount);
 
             // Check that Name of newly-created user exists in the list of users
-            var listOfUserNames = getAllUsersAfterCreation.Select(x => x.name).ToList();
-            Assert.IsTrue(listOfUserNames.Contains(userToCreate.name));
+            var listOfUserNames = getAllUsersAfterCreation.Select(x => x.Name).ToList();
+            Assert.IsTrue(listOfUserNames.Contains(userToCreate.Name));
 
             // Check that the request can be send to the new user using it's Id
             var user = StoreService.GetUserInfo(id);
             Assert.AreEqual(HttpStatusCode.OK, user.StatusCode);
-            Assert.AreEqual(userToCreate.name, user.ResponseModel.name);
+            Assert.AreEqual(userToCreate.Name, user.ResponseModel.Name);
         }
 
         [Test]
@@ -54,12 +54,12 @@ namespace Homework17.Tests
             var password = RandomHelper.GetRandomString(8);
             var userToCreate = new UserToCreate(name, email, password, AvatarUrl);
             var createdUser = StoreService.CreateUser(userToCreate);
-            var id = createdUser.ResponseModel.id;
+            var id = createdUser.ResponseModel.Id;
 
             // Check that user really exists by senfing request to get it's info
             var user = StoreService.GetUserInfo(id);
-            Assert.AreEqual(userToCreate.name, user.ResponseModel.name);
-            Assert.AreEqual(userToCreate.email, user.ResponseModel.email);
+            Assert.AreEqual(userToCreate.Name, user.ResponseModel.Name);
+            Assert.AreEqual(userToCreate.Email, user.ResponseModel.Email);
 
             // Delete the user
             var deletedUser = StoreService.DeleteUser(id);
@@ -79,20 +79,20 @@ namespace Homework17.Tests
             var password = RandomHelper.GetRandomString(8);
             var userToCreate = new UserToCreate(name, email, password, AvatarUrl);
             var createdUser = StoreService.CreateUser(userToCreate);
-            var id = createdUser.ResponseModel.id;
+            var id = createdUser.ResponseModel.Id;
 
-            // Check that user really exists by senfing request to get it's info and check name and email values
+            // Check that user really exists by senfing request to get it's info and check Name and Email values
             var user = StoreService.GetUserInfo(id);
-            Assert.AreEqual(userToCreate.name, user.ResponseModel.name);
-            Assert.AreEqual(userToCreate.email, user.ResponseModel.email);
+            Assert.AreEqual(userToCreate.Name, user.ResponseModel.Name);
+            Assert.AreEqual(userToCreate.Email, user.ResponseModel.Email);
 
             // Update created user Email and Name and check values we got from the response
-            userToCreate.name = RandomHelper.GetRandomString(6);
-            userToCreate.email = RandomHelper.GetRandomString(6) + EmailPart;
+            userToCreate.Name = RandomHelper.GetRandomString(6);
+            userToCreate.Email = RandomHelper.GetRandomString(6) + EmailPart;
             var updatedUser = StoreService.UpdateUser(userToCreate, id);
             Assert.AreEqual(HttpStatusCode.OK, updatedUser.StatusCode);
-            Assert.AreEqual(userToCreate.name, updatedUser.ResponseModel.name);
-            Assert.AreEqual(userToCreate.email, updatedUser.ResponseModel.email);
+            Assert.AreEqual(userToCreate.Name, updatedUser.ResponseModel.Name);
+            Assert.AreEqual(userToCreate.Email, updatedUser.ResponseModel.Email);
         }
     }
 }
