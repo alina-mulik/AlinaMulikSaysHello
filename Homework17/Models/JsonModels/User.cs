@@ -1,4 +1,6 @@
-﻿namespace Homework17.Models.JsonModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Homework17.Models.JsonModels
 {
     public class User
     {
@@ -8,7 +10,7 @@
         public string Name { get; set; }
         public string Role { get; set; }
         public string Avatar { get; set; }
-        public DateTime CreationAt { get; }
-        public DateTime UpdatedAt { get; }
+        public DateTime CreationAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

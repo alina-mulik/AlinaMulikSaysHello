@@ -29,16 +29,5 @@ namespace Homework17.Services
 
             return allUsersList;
         }
-
-        public static RestResponse<User> CreateUserAndGetTimeElapsed(UserToCreate userToCreate, out int timeElapsed)
-        {
-            Stopwatch watch = new Stopwatch();
-            watch.Start();
-            var createdUser = BasicHttpClient.PerformPostRequest<UserToCreate, User>($"{BaseUri}/users", userToCreate, null);
-            watch.Stop();
-            timeElapsed = (int)watch.ElapsedMilliseconds;
-
-            return createdUser;
-        }
     }
 }

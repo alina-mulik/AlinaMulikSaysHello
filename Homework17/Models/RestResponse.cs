@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualBasic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace Homework17.Models
 {
@@ -24,7 +27,9 @@ namespace Homework17.Models
 
         public RestResponse(HttpResponseMessage responseMessage) : base(responseMessage)
         {
-            ResponseModel = JsonConvert.DeserializeObject<T>(ResponseData);
+            JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
+            serializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
+            ResponseModel = JsonConvert.DeserializeObject<T>(ResponseData, serializerSettings);
         }
     }
 }

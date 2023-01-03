@@ -23,11 +23,10 @@ namespace Homework17.Tests
             // Count all users before new user creation
             var getAllUsersBeforeCreationCount = StoreService.GetAllUsersInfo().Count;
 
-            // Create user, check how much time it took and get new user Id
-            // Almost sure that time evaluation is incorrect here, but I don't know how to do it differently  ¯\_(ツ)_/¯
-            var createdUser = StoreService.CreateUserAndGetTimeElapsed(userToCreate, out var timeElapsed);
+            // Create user it took and get new user Id
+            var createdUser = StoreService.CreateUser(userToCreate);
+            var currentDateTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             Assert.AreEqual(HttpStatusCode.Created, createdUser.StatusCode);
-            Assert.Less(timeElapsed, 1000);
             var id = createdUser.ResponseModel.Id;
 
             // Count all users after new user creation and compare counts
@@ -39,9 +38,11 @@ namespace Homework17.Tests
             var listOfUserNames = getAllUsersAfterCreation.Select(x => x.Name).ToList();
             Assert.IsTrue(listOfUserNames.Contains(userToCreate.Name));
 
-            // Check that the request can be send to the new user using it's Id
+            // Check that the request can be send to the new user using it's Id, get and check some of the user properties
             var user = StoreService.GetUserInfo(id);
             Assert.AreEqual(HttpStatusCode.OK, user.StatusCode);
+            var userCreatedAt = user.ResponseModel.CreationAt.ToString("yyyy-MM-dd HH:mm");
+            Assert.AreEqual(currentDateTime, userCreatedAt);
             Assert.AreEqual(userToCreate.Name, user.ResponseModel.Name);
         }
 
