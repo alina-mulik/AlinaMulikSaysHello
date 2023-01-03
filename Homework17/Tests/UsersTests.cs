@@ -24,7 +24,7 @@ namespace Homework17.Tests
             var getAllUsersBeforeCreationCount = StoreService.GetAllUsersInfo().Count;
 
             // Create user, check how much time it took and get new user Id
-            // Almost sure that time evaluation is incorrect here, but I don't knowhow to do it differently  ¯\_(ツ)_/¯
+            // Almost sure that time evaluation is incorrect here, but I don't know how to do it differently  ¯\_(ツ)_/¯
             var createdUser = StoreService.CreateUserAndGetTimeElapsed(userToCreate, out var timeElapsed);
             Assert.AreEqual(HttpStatusCode.Created, createdUser.StatusCode);
             Assert.Less(timeElapsed, 1000);
@@ -56,7 +56,7 @@ namespace Homework17.Tests
             var createdUser = StoreService.CreateUser(userToCreate);
             var id = createdUser.ResponseModel.Id;
 
-            // Check that user really exists by senfing request to get it's info
+            // Check that user really exists by sending request to get it's info
             var user = StoreService.GetUserInfo(id);
             Assert.AreEqual(userToCreate.Name, user.ResponseModel.Name);
             Assert.AreEqual(userToCreate.Email, user.ResponseModel.Email);
