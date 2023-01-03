@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Homework17.Models.JsonModels
+﻿namespace Homework17.Models.JsonModels
 {
     public class User
     {

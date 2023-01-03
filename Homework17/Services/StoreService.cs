@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Homework17.HttpClients;
+﻿using Homework17.HttpClients;
 using Homework17.Models;
 using Homework17.Models.JsonModels;
 using Newtonsoft.Json;
