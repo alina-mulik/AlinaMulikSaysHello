@@ -56,6 +56,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>EntityFrameworkDb.tt</DependentUpon>
     </Compile>
+	<Compile Update="User.cs">
+		<DesignTime>True</DesignTime>
+		<AutoGen>True</AutoGen>
+		<DependentUpon>EntityFrameworkDb.tt</DependentUpon>
+	</Compile>
   </ItemGroup>
 
   <ItemGroup>
