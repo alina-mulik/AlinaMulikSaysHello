@@ -40,7 +40,7 @@ namespace Homework18.EntityFrame
             }
         }
 
-        public static List<User> GetEntityFrameworkDbInstance(Func<EntityFrameworkDbEntities, IQueryable<User>> func)
+        public static List<T> GetEntityFrameworkDbInstance<T>(Func<EntityFrameworkDbEntities, IQueryable<T>> func)
         {
             //GetClientsExtenedConnectionString(ConfigurationHelper.LocalDbConnectionString))
             using (var context = new EntityFrameworkDbEntities(GetSqlConnectionString()))

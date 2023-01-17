@@ -1,6 +1,6 @@
-﻿using Homework18.Adonet.Constants;
+﻿using System.Data;
+using Homework18.Adonet.Constants;
 using Microsoft.Data.SqlClient;
-using System.Data;
 
 namespace Homework18.Adonet
 {

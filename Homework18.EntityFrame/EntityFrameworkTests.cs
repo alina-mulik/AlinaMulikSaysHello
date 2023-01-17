@@ -53,8 +53,8 @@ namespace Homework18.EntityFrame
             // Get list of users after entry deletion
             var listOfNamesAfterDeletion = EntityFrameworkHelpers.GetEntityFrameworkDbInstance(context => context.Users);
 
-            // Check that deleted entry Name is not there
-            Assert.IsTrue(!listOfNamesAfterDeletion.Contains(testUser));
+            // Check that deleted user is not there
+            Assert.IsFalse(listOfNamesAfterDeletion.Contains(testUser));
         }
     }
 }

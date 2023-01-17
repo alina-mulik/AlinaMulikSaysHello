@@ -5,19 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="EntityFrameworkModel.edmx" />
-    <None Remove="Model1.Context.tt" />
-    <None Remove="Model1.tt" />
+	<None Remove="EntityFrameworkModel.edmx" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
+    <Content Include="EntityFrameworkDb.Context.tt">
+		<DependentUpon>EntityFrameworkModel.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <LastGenOutput>EntityFrameworkDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="EntityFrameworkDb.tt">
+		<DependentUpon>EntityFrameworkModel.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <LastGenOutput>EntityFrameworkDb.cs</LastGenOutput>
     </Content>
   </ItemGroup>
 
@@ -45,6 +45,16 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EntityFrameworkModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Update="EntityFrameworkDb.Context.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EntityFrameworkDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Update="EntityFrameworkDb.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EntityFrameworkDb.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
